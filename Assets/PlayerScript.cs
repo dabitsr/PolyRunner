@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     {
         // TP al respawn
         //transform.position = Vector3.zero;
-        transform.position = new Vector3(-2.2f, 0.86f, -9);
+        //transform.position = new Vector3(-2.2f, 0.86f, -9);
     }
 
     // Update is called once per frame
