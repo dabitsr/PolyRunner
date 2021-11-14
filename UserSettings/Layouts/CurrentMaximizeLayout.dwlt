@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 7631
+  controlID: 7790
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 7608
+  controlID: 7791
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7609
+  controlID: 7792
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,10 +225,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 342}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e098fdffbaaafdff42bdfdffd02f0300f22f03000e300300
+      m_ExpandedIDs: 14dcfcffbaaafdff42bdfdffd02f0300f22f03000e300300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -504,9 +504,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.586891, y: 2.5897079, z: 9.985267}
+    m_Target: {x: 16.145346, y: 5.5684466, z: 33.192074}
     speed: 2
-    m_Value: {x: -1.586891, y: 2.5897079, z: 9.985267}
+    m_Value: {x: 16.145346, y: 5.5684466, z: 33.192074}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -553,9 +553,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.01080866, y: -0.00044946518, z: 0.0010957136, w: 1.0002848}
+    m_Target: {x: 0.00905662, y: 0.6481207, z: -0.006035777, w: 0.7619165}
     speed: 2
-    m_Value: {x: 0.010804944, y: -0.00044931067, z: 0.0010953369, w: 0.9999409}
+    m_Value: {x: 0.009053472, y: 0.6478954, z: -0.0060336785, w: 0.7616517}
   m_Size:
     m_Target: 12.124356
     speed: 2
@@ -652,22 +652,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/BOXOPHOBIC/Skybox Cubemap Extended/Demo/Materials
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/BOXOPHOBIC/Skybox Cubemap Extended/Demo/Materials
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity Projects\PolyRunner\PolyRunner
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2c260400
-    m_LastClickedID: 271916
-    m_ExpandedIDs: 00000000620a03001a2604001c2604005026040000ca9a3b
+    scrollPos: {x: 0, y: 66}
+    m_SelectedIDs: 720a0300
+    m_LastClickedID: 199282
+    m_ExpandedIDs: 00000000620a03001a2604001c26040000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -720,9 +720,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 20250400
-    m_LastClickedInstanceID: 271648
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: d64c0400
+    m_LastClickedInstanceID: 281814
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e07d00001cb60100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -839,7 +839,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 271648
+  m_LastInspectedObjectInstanceID: 281814
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
