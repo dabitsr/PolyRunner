@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    Animation anim;
     public float frontSpeed, lateralSpeed, maxLeft, maxRight;
-    public Rigidbody rb;
+    public Vector3 spawnPoint;
+
+    Animation runnningAnim;
+    int playersCollected;
+    int lvl;
+    GameObject collectedPlayersUI;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +19,7 @@ public class PlayerScript : MonoBehaviour
         // TP al respawn
         //transform.position = Vector3.zero;
         //transform.position = new Vector3(-2.2f, 0.86f, -9);
+        collectedPlayersUI = GameObject.FindGameObjectWithTag("CollectedPlayersUI");
     }
 
     // Update is called once per frame
@@ -27,12 +33,19 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        rb.angularVelocity = Vector3.zero;
-    }
+        if (collision.gameObject.tag == "FloorPlayer")
+        {
+            print(collision.gameObject.name);
+            playersCollected++;
+            collectedPlayersUI.GetComponent<Text>().text = "Collected: " + playersCollected;
+            print(playersCollected);
 
-    private void OnCollisionStay(Collision collision)
-    {
-        rb.angularVelocity = Vector3.zero;
+            // Animacion de correr
+            GameObject go = collision.gameObject;
+            go.GetComponent<Animator>().enabled = false;
+            go.GetComponent<Animation>().enabled = true;
+            go.transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
     }
 }
 
