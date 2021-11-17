@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
         transform.position = spawnPoint;
         playersCollectedScript = GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>();
         positions = new Dictionary<Vector2, bool>();
-        distanceAllies = 0.25f;
+        distanceAllies = 0.15f;
     }
 
     void Update()

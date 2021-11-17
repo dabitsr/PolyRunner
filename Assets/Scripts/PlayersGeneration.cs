@@ -6,21 +6,23 @@ public class PlayersGeneration : MonoBehaviour
 {
     public Vector3 firstPlatformPos;
     public GameObject playerPrefab;
+    public Vector3 platformSize;
 
     Vector3 floorSize;
-    Vector3 platformSize;
     // Start is called before the first frame update
     void Start()
     {
-        firstPlatformPos = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+        if (firstPlatformPos == Vector3.zero)
+            firstPlatformPos = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+        if (platformSize == Vector3.zero)
+            platformSize = GetComponent<Renderer>().bounds.size;
         print(firstPlatformPos);
-        platformSize = GetComponent<Renderer>().bounds.size;
         floorSize = new Vector3(firstPlatformPos.x + platformSize.x/2, firstPlatformPos.y, firstPlatformPos.z + (platformSize.z * transform.childCount));
         print(floorSize);
 
         for (int i = 0; i < 40; i++)
         {
-            Vector3 p = new Vector3(Random.Range(firstPlatformPos.x, floorSize.x), floorSize.y, Random.Range(firstPlatformPos.z, floorSize.z));
+            Vector3 p = new Vector3(Random.Range(firstPlatformPos.x, floorSize.x), floorSize.y+1, Random.Range(firstPlatformPos.z, floorSize.z));
             Instantiate(playerPrefab, p, Quaternion.Euler(new Vector3(0, 180, 0)));
         }
     }
