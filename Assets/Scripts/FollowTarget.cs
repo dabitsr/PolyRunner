@@ -19,7 +19,7 @@ public class FollowTarget : MonoBehaviour
 
     void followPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + 2.52f, player.position.z - 5.3f);
+        transform.position = new Vector3(player.position.x, player.position.y + 2.0f, player.position.z - 3.8f);
         transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
     }
 }
