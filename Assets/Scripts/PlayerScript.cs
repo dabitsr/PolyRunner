@@ -1,53 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float frontSpeed, lateralSpeed, maxLeft, maxRight;
     public Vector3 spawnPoint;
     public GameObject playerAllyPrefab;
-    public PlayersCollectedScript playersCollectedScript;
-    public Slider playerCounterSlider;
+    public float distanceAllies = 0.15f;
 
-    Dictionary<Vector2, bool> positions;
-    float distanceAllies;
-    
+    Dictionary<Vector2, bool> positions = new();
+    Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+        anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
-        playersCollectedScript = GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>();
-        positions = new Dictionary<Vector2, bool>();
-        distanceAllies = 0.15f;
     }
 
     void Update()
     {
-        float move = 0;
-        move = Input.GetAxis("Horizontal");
-        if (transform.position.x >= maxRight && move > 0) move = 0;
-        else if (transform.position.x <= maxLeft && move < 0) move = 0;
-        transform.position = new Vector3(transform.position.x + move * lateralSpeed, transform.position.y, transform.position.z + frontSpeed);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("FloorPlayer"))
-        {
-            collectAlly();
-        }
     }
 
     public void collectAlly()
     {
-        // Update UI
-        playersCollectedScript.increasePlayersCollected();
-        playerCounterSlider.value = playersCollectedScript.getPlayersCollected() / 24.0f;
-
         // Assign position
-        int n = playersCollectedScript.getPlayersCollected() - 1;
+        int n = GameObject.FindGameObjectsWithTag("Ally").Length;
         int a = n / 4;
         Vector2 v;
 
@@ -64,8 +42,9 @@ public class PlayerScript : MonoBehaviour
 
         // Create Player Ally
         Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
+        print(v);
         GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
-        ally.GetComponent<PlayerAlly>().initValues(frontSpeed, lateralSpeed, maxLeft, maxRight, gameObject.GetComponent<PlayerScript>(), v);
+        ally.GetComponent<Movement>().setPosRelativeToPlayer(v);
     }
 
     Vector2 getPos(int r, Vector2 v)
