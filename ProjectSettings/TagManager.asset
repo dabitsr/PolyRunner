@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CollectedPlayersUI
   - FloorPlayer
+  - Ally
   layers:
   - Default
   - TransparentFX
