@@ -23,10 +23,13 @@ public class FollowTarget : MonoBehaviour
     {
         if (scene)
         {
-            if (player.position.z > 48.5f) transform.position = new Vector3(player.position.x, player.position.y + 2.0f, player.position.z - 3.8f);
+            if (player.position.z <= 48.5f)
+            {
+                transform.position = new Vector3(2.65f, player.position.y + 2.0f, player.position.z - 2.8f);
+            }
             else
             {
-                transform.position = new Vector3(2.65f, player.position.y + 2.0f, player.position.z - 3.8f);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.position.y + 2.0f, player.position.z - 2.8f), 4 * Time.deltaTime);
             }
             transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
         } else
