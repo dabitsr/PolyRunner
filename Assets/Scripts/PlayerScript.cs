@@ -7,15 +7,19 @@ public class PlayerScript : MonoBehaviour
     public Vector3 spawnPoint;
     public GameObject playerAllyPrefab;
     public float distanceAllies = 0.15f;
+    public float expandX, expandZ;
 
     Dictionary<Vector2, bool> positions = new();
     Animator anim;
+    BoxCollider boxCollider;
+    Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
 
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -41,6 +45,30 @@ public class PlayerScript : MonoBehaviour
         else print("ERROR: v == (-1, -1)");
 
         // Create Player Ally
+        if (v.x > posFarAlly.x)
+        {
+            posFarAlly.x = v.x;
+            boxCollider.size += Vector3.right * expandX;
+            boxCollider.center += Vector3.right * (expandX/2);
+        } else if (v.x < negFarAlly.x)
+        {
+            negFarAlly.x = v.x;
+            boxCollider.size += Vector3.right * expandX;
+            boxCollider.center += Vector3.left * (expandX / 2);
+        }
+
+        if (v.y > posFarAlly.y)
+        {
+            posFarAlly.y = v.y;
+            boxCollider.size += Vector3.forward * expandZ;
+            boxCollider.center += Vector3.forward * (expandZ / 2);
+        }
+        else if (v.y < negFarAlly.y)
+        {
+            negFarAlly.y = v.y;
+            boxCollider.size += Vector3.forward * expandZ;
+            boxCollider.center += Vector3.back * (expandZ / 2);
+        }
         Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
         print(v);
         GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
