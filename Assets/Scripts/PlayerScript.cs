@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
         boxCollider = GetComponent<BoxCollider>();
+        print(boxCollider.bounds.size);
     }
 
     void Update()
@@ -70,7 +71,6 @@ public class PlayerScript : MonoBehaviour
             boxCollider.center += Vector3.back * (expandZ / 2);
         }
         Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
-        print(v);
         GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
         ally.GetComponent<Movement>().setPosRelativeToPlayer(v);
     }
