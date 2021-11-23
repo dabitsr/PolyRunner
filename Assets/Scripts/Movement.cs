@@ -5,14 +5,18 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed, maxLeft, maxRight;
+
     GameObject player;
+    GameManager gameManager;
     Vector2 posRelativeToPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.CompareTag("Ally"))
-            player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        maxLeft = gameManager.getMaxLeft();
+        maxRight = gameManager.getMaxRight();
     }
 
     // Update is called once per frame

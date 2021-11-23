@@ -4008,6 +4008,9 @@ MonoBehaviour:
   speed: 3
   maxLeft: 0.8
   maxRight: 4.5
+  bounds:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &197509483
 MonoBehaviour:
   m_ObjectHideFlags: 0

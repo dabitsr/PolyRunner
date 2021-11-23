@@ -10932,7 +10932,6 @@ GameObject:
   - component: {fileID: -6348166957949607721}
   - component: {fileID: -4977948646253911547}
   - component: {fileID: -6212192310138715833}
-  - component: {fileID: -7765828680736313230}
   m_Layer: 0
   m_Name: FloorPlayer
   m_TagString: FloorPlayer
@@ -11018,22 +11017,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.509668, y: 1.871829, z: 0.39174557}
   m_Center: {x: 0.0031033158, y: 0.89948356, z: 0.024826527}
---- !u!111 &-7765828680736313230
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803654955834826522}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 1ec07217d678fd648b09c3b0006e6d72, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 1ec07217d678fd648b09c3b0006e6d72, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1803685856998311830
 GameObject:
   m_ObjectHideFlags: 0
