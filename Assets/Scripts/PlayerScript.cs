@@ -6,9 +6,9 @@ public class PlayerScript : MonoBehaviour
 {
     public Vector3 spawnPoint;
     public GameObject playerAllyPrefab;
-    public float distanceAllies = 0.15f;
     public float expandX, expandZ;
 
+    float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
     Animator anim;
     BoxCollider boxCollider;
@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
         boxCollider = GetComponent<BoxCollider>();
-        print(boxCollider.bounds.size);
+        distanceAllies = boxCollider.bounds.size.x;
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour
         else v = new Vector2(-1, -1);
 
         if (v != new Vector2(-1, -1)) v = getPos(n % 4, v);
-        else print("ERROR: v == (-1, -1)");
+        else print("Max allies reached!");
 
         // Create Player Ally
         if (v.x > posFarAlly.x)
@@ -72,6 +72,7 @@ public class PlayerScript : MonoBehaviour
         }
         Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
         GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
+        ally.transform.localScale = transform.localScale;
         ally.GetComponent<Movement>().setPosRelativeToPlayer(v);
     }
 
