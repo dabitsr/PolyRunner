@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class CollisionManager : MonoBehaviour
 {
-    Slider playerCounterSlider;
+    public ParticleSystem particle;
+
+    PlayerCounterSlider playerCounterSlider;
     PlayerScript playerScript;
     List<int> pickedAllies;
 
@@ -13,7 +15,7 @@ public class CollisionManager : MonoBehaviour
     void Start()
     {
         playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
-        playerCounterSlider = GameObject.Find("Slider").GetComponent<Slider>();
+        playerCounterSlider = GameObject.Find("Slider").GetComponent<PlayerCounterSlider>();
     }
 
     // Update is called once per frame
@@ -25,10 +27,13 @@ public class CollisionManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FloorPlayer"))
         {
+            particle.transform.position = collision.transform.position;
+            particle.Play();
+
             // Update UI
             GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().increasePlayersCollected();
 
-            playerCounterSlider.value += 1 / 24.0f;
+            playerCounterSlider.IncreaseSlider();
 
             playerScript.collectAlly();
         }
