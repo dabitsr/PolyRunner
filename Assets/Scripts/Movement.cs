@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed, maxLeft, maxRight;
-
+    public float speed;
+    
+    float maxLeft, maxRight;
     GameObject player;
     GameManager gameManager;
     Vector2 posRelativeToPlayer;
@@ -15,6 +16,8 @@ public class Movement : MonoBehaviour
     {
         player = GameObject.Find("Player");
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        maxLeft = maxRight = 0;
+        
         maxLeft = gameManager.getMaxLeft();
         maxRight = gameManager.getMaxRight();
     }
@@ -56,11 +59,13 @@ public class Movement : MonoBehaviour
 
     void movePlayer()
     {
-        float move = 0;
-        move = Input.GetAxis("Horizontal");
+        float move = Mathf.Clamp(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, maxLeft, maxRight);
+        transform.position = new Vector3(move, transform.position.y, transform.position.z + speed * Time.deltaTime);
+        /*
         if (transform.position.x >= maxRight && move > 0) move = 0;
         else if (transform.position.x <= maxLeft && move < 0) move = 0;
         transform.Translate(new Vector3(move * speed * Time.deltaTime, 0, speed * Time.deltaTime));
+        */
     }
 
     public void setPosRelativeToPlayer(Vector2 newPos)
