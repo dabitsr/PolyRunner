@@ -22,6 +22,6 @@ public class PlayerCounterSlider : MonoBehaviour
 
     public void IncreaseSlider()
     {
-        this.newVal = val + 1;
+        newVal += 1;
     }
 }
