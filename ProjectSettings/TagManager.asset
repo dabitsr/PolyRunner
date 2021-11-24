@@ -8,6 +8,7 @@ TagManager:
   - FloorPlayer
   - Ally
   - Sensor
+  - Obstacle
   layers:
   - Default
   - TransparentFX
