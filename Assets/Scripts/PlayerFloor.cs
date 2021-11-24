@@ -15,13 +15,11 @@ public class PlayerFloor : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-
-            // Añadir particulas o animacion de muerte
         }
     }
 }

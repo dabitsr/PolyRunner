@@ -26,4 +26,10 @@ public class PlayersCollectedScript : MonoBehaviour
         playersCollected++;
         GetComponent<Text>().text = playersCollected + "/24";
     }
+
+    public void decreasePlayersCollected()
+    {
+        playersCollected--;
+        GetComponent<Text>().text = playersCollected + "/24";
+    }
 }

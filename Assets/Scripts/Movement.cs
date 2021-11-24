@@ -72,4 +72,9 @@ public class Movement : MonoBehaviour
     {
         posRelativeToPlayer = newPos;
     }
+
+    public Vector2 getPosRelativeToPlayer()
+    {
+        return posRelativeToPlayer;
+    }
 }
