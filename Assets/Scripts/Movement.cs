@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
+    [SerializeField] bool useSensor = false;
     
     float maxLeft, maxRight;
     GameObject player;
     GameManager gameManager;
     Vector2 posRelativeToPlayer;
+    Rigidbody playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        playerRb = player.GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         maxLeft = maxRight = 0;
         
-        maxLeft = gameManager.getMaxLeft();
-        maxRight = gameManager.getMaxRight();
+
+        if (useSensor)
+        {
+            maxLeft = 1.0f;
+            maxRight = 4.1f;
+        } else
+        {
+            maxLeft = gameManager.getMaxLeft();
+            maxRight = gameManager.getMaxRight();
+        }
     }
 
     // Update is called once per frame
@@ -76,5 +87,14 @@ public class Movement : MonoBehaviour
     public Vector2 getPosRelativeToPlayer()
     {
         return posRelativeToPlayer;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Sensor"))
+        {
+            maxLeft = gameManager.getMaxLeft();
+            maxRight = gameManager.getMaxRight();
+        }
     }
 }
