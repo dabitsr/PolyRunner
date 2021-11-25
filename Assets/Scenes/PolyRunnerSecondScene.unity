@@ -2076,6 +2076,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7068154048998744002, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669080024, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
+      propertyPath: useSensor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1669080025, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
       propertyPath: particle
       value: 

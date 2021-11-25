@@ -4006,6 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  useSensor: 0
 --- !u!114 &652227691245691781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4019,6 +4020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 8618697614025096427, guid: 96d97c35900ea8646af7c13465d73771, type: 3}
+  killParticle: {fileID: 0}
 --- !u!1 &5517536978987543002
 GameObject:
   m_ObjectHideFlags: 0
