@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed, maxLeft, maxRight;
-
+    [SerializeField] float speed;
+    [SerializeField] bool useSensor = false;
+    
+    float maxLeft, maxRight;
     GameObject player;
     GameManager gameManager;
     Vector2 posRelativeToPlayer;
+    Rigidbody playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        playerRb = player.GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        maxLeft = gameManager.getMaxLeft();
-        maxRight = gameManager.getMaxRight();
+        maxLeft = maxRight = 0;
+        
+
+        if (useSensor)
+        {
+            maxLeft = 1.0f;
+            maxRight = 4.1f;
+        } else
+        {
+            maxLeft = gameManager.getMaxLeft();
+            maxRight = gameManager.getMaxRight();
+        }
     }
 
     // Update is called once per frame
@@ -56,15 +70,31 @@ public class Movement : MonoBehaviour
 
     void movePlayer()
     {
-        float move = 0;
-        move = Input.GetAxis("Horizontal");
+        float move = Mathf.Clamp(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, maxLeft, maxRight);
+        transform.position = new Vector3(move, transform.position.y, transform.position.z + speed * Time.deltaTime);
+        /*
         if (transform.position.x >= maxRight && move > 0) move = 0;
         else if (transform.position.x <= maxLeft && move < 0) move = 0;
         transform.Translate(new Vector3(move * speed * Time.deltaTime, 0, speed * Time.deltaTime));
+        */
     }
 
     public void setPosRelativeToPlayer(Vector2 newPos)
     {
         posRelativeToPlayer = newPos;
+    }
+
+    public Vector2 getPosRelativeToPlayer()
+    {
+        return posRelativeToPlayer;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Sensor"))
+        {
+            maxLeft = gameManager.getMaxLeft();
+            maxRight = gameManager.getMaxRight();
+        }
     }
 }

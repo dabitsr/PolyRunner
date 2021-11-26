@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayersCollectedScript : MonoBehaviour
 {
-    int playersCollected;
+    float playersCollected;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +15,8 @@ public class PlayersCollectedScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
-    public int getPlayersCollected()
+    public float getPlayersCollected()
     {
         return playersCollected;
     }
@@ -25,6 +24,12 @@ public class PlayersCollectedScript : MonoBehaviour
     public void increasePlayersCollected()
     {
         playersCollected++;
+        GetComponent<Text>().text = playersCollected + "/24";
+    }
+
+    public void decreasePlayersCollected()
+    {
+        playersCollected--;
         GetComponent<Text>().text = playersCollected + "/24";
     }
 }

@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct initBoxColliderStruct
+{
+    public Vector3 size;
+    public Vector3 center;
+};
+
 public class PlayerScript : MonoBehaviour
 {
     public Vector3 spawnPoint;
     public GameObject playerAllyPrefab;
-    public float distanceAllies = 0.15f;
     public float expandX, expandZ;
 
+    float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
     Animator anim;
     BoxCollider boxCollider;
+    initBoxColliderStruct initBox;
     Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
+    int allies;
 
     void Start()
     {
@@ -20,17 +28,25 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
         boxCollider = GetComponent<BoxCollider>();
-        print(boxCollider.bounds.size);
+        initBox.size = boxCollider.size;
+        initBox.center = boxCollider.center;
+        distanceAllies = boxCollider.bounds.size.x;
     }
 
     void Update()
     {
+        if (GameObject.FindGameObjectsWithTag("Ally").Length < allies)
+        {
+            RepositionAllies();
+            allies = GameObject.FindGameObjectsWithTag("Ally").Length;
+        }
+        else allies = GameObject.FindGameObjectsWithTag("Ally").Length;
     }
 
-    public void collectAlly()
+    public void collectAlly(int n, GameObject existingAlly)
     {
-        // Assign position
-        int n = GameObject.FindGameObjectsWithTag("Ally").Length;
+        // Assign position relative to player
+        //int n = GameObject.FindGameObjectsWithTag("Ally").Length;
         int a = n / 4;
         Vector2 v;
 
@@ -43,9 +59,9 @@ public class PlayerScript : MonoBehaviour
         else v = new Vector2(-1, -1);
 
         if (v != new Vector2(-1, -1)) v = getPos(n % 4, v);
-        else print("ERROR: v == (-1, -1)");
+        else print("Max allies reached!");
 
-        // Create Player Ally
+        // Box collider
         if (v.x > posFarAlly.x)
         {
             posFarAlly.x = v.x;
@@ -63,16 +79,24 @@ public class PlayerScript : MonoBehaviour
             posFarAlly.y = v.y;
             boxCollider.size += Vector3.forward * expandZ;
             boxCollider.center += Vector3.forward * (expandZ / 2);
-        }
-        else if (v.y < negFarAlly.y)
+        } else if (v.y < negFarAlly.y)
         {
             negFarAlly.y = v.y;
             boxCollider.size += Vector3.forward * expandZ;
             boxCollider.center += Vector3.back * (expandZ / 2);
         }
-        Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
-        GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
-        ally.GetComponent<Movement>().setPosRelativeToPlayer(v);
+
+        if (existingAlly == null)
+        {
+            // Create Ally
+            Vector3 initPos = new Vector3(transform.position.x + v.x, transform.position.y, transform.position.z + v.y);
+            GameObject ally = Instantiate(playerAllyPrefab, initPos, Quaternion.Euler(new Vector3(0, 180, 0)));
+            ally.transform.localScale = transform.localScale;
+            ally.GetComponent<Movement>().setPosRelativeToPlayer(v);
+        } else
+        {
+            existingAlly.GetComponent<Movement>().setPosRelativeToPlayer(v);
+        }
     }
 
     Vector2 getPos(int r, Vector2 v)
@@ -100,9 +124,23 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void RepositionAllies()
+    {
+        GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
+        positions.Clear();
+        posFarAlly = negFarAlly = new Vector2(0, 0);
+        boxCollider.size = initBox.size;
+        boxCollider.center = initBox.center;
+        for (int i = 0; i < allies.Length; i++)
+        {
+            print("Reposition Ally " + i);
+            collectAlly(i, allies[i]);
+        }
+    }
+
     public void deletePos(Vector2 v)
     {
-        positions[v] = false;
+        //positions[v] = false;
     }
 
     public Vector3 getPosition()
