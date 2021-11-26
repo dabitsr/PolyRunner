@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CollisionManager : MonoBehaviour
 {
-    public ParticleSystem particle, killParticle;
+    [SerializeField] ParticleSystem particle, killParticle;
 
     PlayerCounterSlider playerCounterSlider;
     PlayerScript playerScript;
@@ -15,7 +15,6 @@ public class CollisionManager : MonoBehaviour
     {
         playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         playerCounterSlider = GameObject.Find("Slider").GetComponent<PlayerCounterSlider>();
-        killParticle = GameObject.Find("Kill Particle").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -25,27 +24,32 @@ public class CollisionManager : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (gameObject.CompareTag("Ally"))
+        {
+            if (collision.gameObject.CompareTag("Obstacle"))
+                KillAlly();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("Ally") && other.CompareTag("Obstacle"))
-        {
-            killParticle.transform.position = transform.position;
-            killParticle.Play();
-            Destroy(gameObject);
-            playerCounterSlider.DecreaseSlider();
-            GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().decreasePlayersCollected();
-        }
-
         if (gameObject.CompareTag("Player") && other.gameObject.CompareTag("FloorPlayer"))
             AddAlly(other.gameObject.transform.position);
     }
 
+    void KillAlly()
+    {
+        ParticleSystem p = Instantiate(killParticle, transform.position, transform.rotation);
+        p.Play();
+        playerCounterSlider.DecreaseSlider();
+        GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().decreasePlayersCollected();
+
+        Destroy(gameObject);
+    }
+
     void AddAlly(Vector3 pos)
     {
-        particle.transform.position = pos;
-        particle.Play();
+        Instantiate(particle, pos, transform.rotation).Play();
 
         // Update UI
         GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().increasePlayersCollected();

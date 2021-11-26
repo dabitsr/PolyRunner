@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
         {
             maxLeft = bounds[0].gameObject.transform.position.x + offset;
             maxRight = bounds[1].gameObject.transform.position.x - offset;
-            print(maxLeft);
-            print(maxRight);
         }
         else
         {
