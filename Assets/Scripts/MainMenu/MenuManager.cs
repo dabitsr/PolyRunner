@@ -13,11 +13,9 @@ public class MenuManager : MonoBehaviour
     public GameObject[] frame;
     public GameObject startButton;
     public EventSystem ES;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Start(){}
 
     // Update is called once per frame
     void Update()
@@ -29,6 +27,14 @@ public class MenuManager : MonoBehaviour
             ES.SetSelectedGameObject(startButton);
             frame0_cam.gameObject.SetActive(false);
             frame1_cam.gameObject.SetActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            frame[0].SetActive(true);
+            frame[1].SetActive(false);
+            ES.SetSelectedGameObject(startButton);
+            frame0_cam.gameObject.SetActive(true);
+            frame1_cam.gameObject.SetActive(false);
         }
     }
 }
