@@ -133,7 +133,6 @@ public class PlayerScript : MonoBehaviour
         boxCollider.center = initBox.center;
         for (int i = 0; i < allies.Length; i++)
         {
-            print("Reposition Ally " + i);
             collectAlly(i, allies[i]);
         }
     }
