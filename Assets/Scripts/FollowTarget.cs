@@ -24,7 +24,7 @@ public class FollowTarget : MonoBehaviour
     {
         // Temporal script
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + offset, player.transform.position.z - offset);
-        transform.rotation = Quaternion.Euler(Vector3.right * 30);
+        transform.rotation = Quaternion.Euler(Vector3.right * 25);
         /*
         if (scene)
         {

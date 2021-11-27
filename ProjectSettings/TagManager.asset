@@ -9,6 +9,12 @@ TagManager:
   - Ally
   - Sensor
   - Obstacle
+  - Turn Left
+  - Turn Right
+  - Init Turn Left
+  - Fin Turn Left
+  - Init Turn Right
+  - Fin Turn Right
   layers:
   - Default
   - TransparentFX
