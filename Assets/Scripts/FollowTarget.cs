@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     public bool scene;
-    public float offset;
+    public float zOffset, yOffset, angle;
 
     public Transform player;
     // Start is called before the first frame update
@@ -41,10 +41,10 @@ public class FollowTarget : MonoBehaviour
             transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
         } else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.position.y + offset, player.position.z - offset), 4 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.position.y + yOffset, player.position.z - zOffset), 4 * Time.deltaTime);
             //transform.position = new Vector3(player.position.x, player.position.y + 2.0f, player.position.z - 3.8f);
             //transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
-            transform.rotation = Quaternion.Euler(Vector3.right * 15);
+            transform.rotation = Quaternion.Euler(Vector3.right * angle);
         }
     }
 }
