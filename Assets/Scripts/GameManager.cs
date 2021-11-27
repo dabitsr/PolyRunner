@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         firstPlatformPos = firstPlatform.transform.position;
         platformSize = firstPlatform.GetComponent<BoxCollider>().bounds.size - Vector3.right*offset*2;
 
-        GenerateFloorPlayers();
+        //GenerateFloorPlayers();
     }
 
     // Update is called once per frame
@@ -62,15 +62,5 @@ public class GameManager : MonoBehaviour
     public float getMaxRight()
     {
         return maxRight;
-    }
-
-    public Vector3 GetFirstPlatformPos()
-    {
-        return firstPlatformPos;
-    }
-
-    public Vector3 GetPlatformSize()
-    {
-        return platformSize;
     }
 }
