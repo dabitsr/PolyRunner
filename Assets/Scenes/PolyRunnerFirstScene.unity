@@ -6889,17 +6889,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
+      propertyPath: angle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
       propertyPath: scene
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
       propertyPath: offset
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 351355889}
+    - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
+      propertyPath: yOffset
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194487221249064635, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
+      propertyPath: zOffset
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7270edccf227db440bd2da5ca80e0e7f, type: 3}
 --- !u!4 &843711551 stripped
