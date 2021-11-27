@@ -23,9 +23,11 @@ public class FollowTarget : MonoBehaviour
     void followPlayer()
     {
         // Temporal script
+        /* 
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + offset, player.transform.position.z - offset);
         transform.rotation = Quaternion.Euler(Vector3.right * 25);
-        /*
+        */
+        
         if (scene)
         {
             if (player.position.z <= 48.5f)
@@ -39,9 +41,10 @@ public class FollowTarget : MonoBehaviour
             transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
         } else
         {
-            transform.position = new Vector3(player.position.x, player.position.y + 2.0f, player.position.z - 3.8f);
-            transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.position.y + offset, player.position.z - offset), 4 * Time.deltaTime);
+            //transform.position = new Vector3(player.position.x, player.position.y + 2.0f, player.position.z - 3.8f);
+            //transform.rotation = Quaternion.Euler(player.rotation.x + 15, player.rotation.y, 0);
+            transform.rotation = Quaternion.Euler(Vector3.right * 15);
         }
-         */
     }
 }
