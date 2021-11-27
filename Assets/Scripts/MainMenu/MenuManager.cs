@@ -16,15 +16,21 @@ public class MenuManager : MonoBehaviour
     public CinemachineVirtualCamera frame3_cam;
     public CinemachineVirtualCamera frame4_cam;
     public CinemachineVirtualCamera frame5_cam;
+    public CinemachineVirtualCamera frame6_cam;
+    public CinemachineVirtualCamera frame7_cam;
 
     public GameObject[] frame;
     public GameObject startButton;
     public EventSystem ES;
 
     public Button StartGameButton;
+
     public Button FirstLevelButton;
     public Button SecondLevelButton;
     public Button ThirdLevelButton;
+
+    public Button InstructionsButton;
+    public Button CreditsButton;
 
     public GameObject westTrain;
     public GameObject scifiBalloon;
@@ -37,6 +43,9 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+                /* START GAME AND LEVELS */
+
         Button btn = StartGameButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
 
@@ -54,6 +63,17 @@ public class MenuManager : MonoBehaviour
 
         Button btn4 = ThirdLevelButton.GetComponent<Button>();
         btn4.onClick.AddListener(TaskOnClickThird);
+
+                /* INSTRUCTIONS */
+
+        Button instButton = InstructionsButton.GetComponent<Button>();
+        instButton.onClick.AddListener(TaskOnClickInstructions);
+
+                /* CREDITS */
+
+        Button credButton = CreditsButton.GetComponent<Button>();
+        credButton.onClick.AddListener(TaskOnClickCredits);
+
     }
 
     // Update is called once per frame
@@ -76,7 +96,9 @@ public class MenuManager : MonoBehaviour
                 ES.SetSelectedGameObject(startButton);
                 frame0_cam.gameObject.SetActive(true);
                 frame1_cam.gameObject.SetActive(false);
-            } else if (frame[2].activeInHierarchy)
+            } 
+            
+            else if (frame[2].activeInHierarchy)
             {
                 frame[1].SetActive(true);
                 frame[2].SetActive(false);
@@ -85,6 +107,23 @@ public class MenuManager : MonoBehaviour
                 frame2_cam.gameObject.SetActive(false);
             }
             
+            else if (frame[3].activeInHierarchy)
+            {
+                frame[1].SetActive(true);
+                frame[3].SetActive(false);
+                ES.SetSelectedGameObject(startButton);
+                frame1_cam.gameObject.SetActive(true);
+                frame6_cam.gameObject.SetActive(false);
+            }
+
+            else if (frame[4].activeInHierarchy)
+            {
+                frame[1].SetActive(true);
+                frame[4].SetActive(false);
+                ES.SetSelectedGameObject(startButton);
+                frame1_cam.gameObject.SetActive(true);
+                frame7_cam.gameObject.SetActive(false);
+            }
         }
 
         if (pressedFirst)
@@ -149,6 +188,35 @@ public class MenuManager : MonoBehaviour
     void TaskOnClickThird()
     {
         pressedThird = true;
+    }
+
+    void TaskOnClickInstructions()
+    {
+        frame[1].SetActive(false);
+        frame[3].SetActive(true);
+        ES.SetSelectedGameObject(startButton);
+        frame0_cam.gameObject.SetActive(false);
+        frame1_cam.gameObject.SetActive(false);
+        frame2_cam.gameObject.SetActive(false);
+        frame3_cam.gameObject.SetActive(false);
+        frame4_cam.gameObject.SetActive(false);
+        frame5_cam.gameObject.SetActive(false);
+        frame6_cam.gameObject.SetActive(true);
+    }
+
+    void TaskOnClickCredits()
+    {
+        frame[1].SetActive(false);
+        frame[4].SetActive(true);
+        ES.SetSelectedGameObject(startButton);
+        frame0_cam.gameObject.SetActive(false);
+        frame1_cam.gameObject.SetActive(false);
+        frame2_cam.gameObject.SetActive(false);
+        frame3_cam.gameObject.SetActive(false);
+        frame4_cam.gameObject.SetActive(false);
+        frame5_cam.gameObject.SetActive(false);
+        frame6_cam.gameObject.SetActive(false);
+        frame7_cam.gameObject.SetActive(true);
     }
 
 }
