@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     public Button FirstLevelButton;
     public Button SecondLevelButton;
     public Button ThirdLevelButton;
+    public Button FourthLevelButton;
 
     public Button InstructionsButton;
     public Button CreditsButton;
@@ -39,6 +40,7 @@ public class MenuManager : MonoBehaviour
     private bool pressedFirst;
     private bool pressedSecond;
     private bool pressedThird;
+    private bool pressedFourth;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +66,12 @@ public class MenuManager : MonoBehaviour
         Button btn4 = ThirdLevelButton.GetComponent<Button>();
         btn4.onClick.AddListener(TaskOnClickThird);
 
-                /* INSTRUCTIONS */
+        pressedFourth = false;
+
+        Button btn5 = FourthLevelButton.GetComponent<Button>();
+        btn5.onClick.AddListener(TaskOnClickFourth);
+
+        /* INSTRUCTIONS */
 
         Button instButton = InstructionsButton.GetComponent<Button>();
         instButton.onClick.AddListener(TaskOnClickInstructions);
@@ -159,6 +166,11 @@ public class MenuManager : MonoBehaviour
             if (cityBalloon.transform.position.y > 20) SceneManager.LoadScene("PolyRunnerThirdScene");
         }
 
+        else if (pressedFourth)
+        {
+            SceneManager.LoadScene("PolyRunnerFourthScene");
+        }
+
 
     }
 
@@ -188,6 +200,11 @@ public class MenuManager : MonoBehaviour
     void TaskOnClickThird()
     {
         pressedThird = true;
+    }
+
+    void TaskOnClickFourth()
+    {
+        pressedFourth = true;
     }
 
     void TaskOnClickInstructions()
