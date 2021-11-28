@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
             print(bounds[0].GetComponent<BoxCollider>().bounds.size);
         }
 
-        firstPlatformPos = firstPlatform.transform.position;
-        platformSize = firstPlatform.GetComponent<BoxCollider>().bounds.size - Vector3.right*offset*2;
+        //firstPlatformPos = firstPlatform.transform.position;
+        //platformSize = firstPlatform.GetComponent<BoxCollider>().bounds.size - Vector3.right*offset*2;
 
         //GenerateFloorPlayers();
     }
