@@ -48,9 +48,12 @@ public class CarController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Init Turn Left")) initTurn(false, other.GetComponent<TurnCarController>().time);
-        else if (other.CompareTag("Init Turn Right")) initTurn(true, other.GetComponent<TurnCarController>().time);
-        else if (other.CompareTag("Fin Turn Left") || other.CompareTag("Fin Turn Right")) finTurn();
+        if (gameObject.name != "Truck")
+        {
+            if (other.CompareTag("Init Turn Left")) initTurn(false, other.GetComponent<TurnCarController>().time);
+            else if (other.CompareTag("Init Turn Right")) initTurn(true, other.GetComponent<TurnCarController>().time);
+            else if (other.CompareTag("Fin Turn Left") || other.CompareTag("Fin Turn Right")) finTurn();
+        }
     }
 
     void initTurn(bool right, float time)

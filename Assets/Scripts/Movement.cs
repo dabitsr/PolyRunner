@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] bool useSensor = false;
+    public bool stopMoving = false;
     
     float maxLeft, maxRight;
     GameObject player;
@@ -37,7 +38,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (gameObject.CompareTag("Player")) movePlayer();
-        else moveAlly();
+        else
+            if (!stopMoving)
+                moveAlly();
     }
 
     void moveAlly()
@@ -65,6 +68,7 @@ public class Movement : MonoBehaviour
             move.x += (xOffset * -1);
             move.z += (zOffset * -1);
         }
+
         transform.Translate(new Vector3(move.x * speed * Time.deltaTime, 0, (speed + speed * move.z) * Time.deltaTime));
     }
 

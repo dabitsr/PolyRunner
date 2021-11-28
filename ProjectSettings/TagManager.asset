@@ -15,6 +15,10 @@ TagManager:
   - Fin Turn Left
   - Init Turn Right
   - Fin Turn Right
+  - People Obstacle
+  - Despawner
+  - Plane Sensor
+  - Player Sensor
   layers:
   - Default
   - TransparentFX
