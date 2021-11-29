@@ -19,6 +19,8 @@ TagManager:
   - Despawner
   - Plane Sensor
   - Player Sensor
+  - StopSensor
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX

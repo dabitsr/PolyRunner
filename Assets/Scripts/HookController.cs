@@ -14,28 +14,24 @@ public class HookController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        target = 360.0f - targetLeft;
+        target = targetLeft;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.localRotation.eulerAngles.x > 90)
+        rb.MoveRotation(Quaternion.Euler(Vector3.forward * 10 * Time.deltaTime));
+        /*
+        if (transform.eulerAngles.x > 90 && transform.eulerAngles.x < 360 - (targetLeft + 5))
         {
-            angle = (360.0f - transform.localRotation.eulerAngles.x) * -1;
-        }
-
-        if (angle >= targetRight + 1 && angle < 90.0f)
-        {
-            print("A");
-            target = 360.0f - targetLeft;
-        } else if (angle <= targetLeft + 1)
-        {
-            print("B");
             target = targetRight;
         }
+        else if (transform.eulerAngles.x < 90 && transform.eulerAngles.x > targetRight - 5)
+            target = targetLeft;
         angle = Mathf.SmoothDampAngle(transform.eulerAngles.x, target, ref hookVelocity, hookSpinTime);
-        print(angle);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x + angle * Time.deltaTime, transform.eulerAngles.y, transform.eulerAngles.z);
+        print(transform.eulerAngles);
+         */
+        //rb.MoveRotation(Quaternion.Euler(new Vector3(0, 0, angle)));
     }
 }
