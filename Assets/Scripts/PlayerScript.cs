@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     initBoxColliderStruct initBox;
     Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
     int allies;
-
+    AudioSource audio;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -31,6 +31,8 @@ public class PlayerScript : MonoBehaviour
         initBox.size = boxCollider.size;
         initBox.center = boxCollider.center;
         distanceAllies = boxCollider.bounds.size.x;
+
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -145,6 +147,12 @@ public class PlayerScript : MonoBehaviour
     public Vector3 getPosition()
     {
         return transform.position;
+    }
+
+    public void PlayAudio(AudioClip a)
+    {
+        audio.clip = a;
+        audio.Play();
     }
 }
 
