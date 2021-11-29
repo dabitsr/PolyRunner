@@ -31,16 +31,16 @@ public class GameManager : MonoBehaviour
             print(bounds[0].GetComponent<BoxCollider>().bounds.size);
         }
 
-        //firstPlatformPos = firstPlatform.transform.position;
-        //platformSize = firstPlatform.GetComponent<BoxCollider>().bounds.size - Vector3.right*offset*2;
-
-        //GenerateFloorPlayers();
+        /*
+        firstPlatformPos = firstPlatform.transform.position;
+        platformSize = firstPlatform.GetComponent<BoxCollider>().bounds.size - Vector3.right*offset*2;
+        GenerateFloorPlayers();
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void GenerateFloorPlayers()
