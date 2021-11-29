@@ -4008,6 +4008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   useSensor: 0
+  stopMoving: 0
 --- !u!114 &652227691245691781
 MonoBehaviour:
   m_ObjectHideFlags: 0

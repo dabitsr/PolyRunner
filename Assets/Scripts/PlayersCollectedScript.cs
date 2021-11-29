@@ -32,4 +32,10 @@ public class PlayersCollectedScript : MonoBehaviour
         playersCollected--;
         GetComponent<Text>().text = playersCollected + "/24";
     }
+
+    public void SetPlayersCollected(int n)
+    {
+        playersCollected = n;
+        GetComponent<Text>().text = playersCollected + "/24";
+    }
 }

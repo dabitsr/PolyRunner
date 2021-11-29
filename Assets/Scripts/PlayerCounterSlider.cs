@@ -29,4 +29,9 @@ public class PlayerCounterSlider : MonoBehaviour
     {
         newVal -= 1;
     }
+
+    public void SetSlider(int n)
+    {
+        newVal = n;
+    }
 }
