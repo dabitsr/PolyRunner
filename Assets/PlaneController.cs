@@ -6,18 +6,19 @@ public class PlaneController : MonoBehaviour
 {
     [SerializeField] float speed, rotationSpeed;
     [SerializeField] GameObject activate;
+
+    AudioSource audio;
     public bool move = false, fly = false;
     float angle = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(transform.eulerAngles);
         if (move)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -43,7 +44,7 @@ public class PlaneController : MonoBehaviour
     public void Fly()
     {
         fly = true;
-
+        audio.Play();
         activate.SetActive(true);
     }
 }

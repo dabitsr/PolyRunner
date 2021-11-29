@@ -10,6 +10,8 @@ public class CollisionManager : MonoBehaviour
     PlayerCounterSlider playerCounterSlider;
     PlayerScript playerScript;
     Animator anim;
+    AudioSource audio;
+    AudioClip pickAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,11 @@ public class CollisionManager : MonoBehaviour
         playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         playerCounterSlider = GameObject.Find("Slider").GetComponent<PlayerCounterSlider>();
         anim = GetComponent<Animator>();
+        if (gameObject.CompareTag("Player"))
+        {
+            audio = GetComponent<AudioSource>();
+            pickAudio = audio.clip;
+        }
     }
 
     // Update is called once per frame
@@ -35,12 +42,22 @@ public class CollisionManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.CompareTag("Player") && other.gameObject.CompareTag("FloorPlayer"))
-            AddAlly(other.gameObject.transform.position);
-
-        if (gameObject.CompareTag("Ally") && other.gameObject.CompareTag("People Obstacle"))
         {
-            anim.SetTrigger("punch");
-            KillAlly(false);
+            AddAlly(other.gameObject.transform.position);
+            audio.clip = pickAudio;
+            audio.Play();
+        }
+
+        if (gameObject.CompareTag("Ally"))
+        {
+            if (other.gameObject.CompareTag("People Obstacle"))
+            {
+                anim.SetTrigger("punch");
+                KillAlly(false);
+            } else if (other.gameObject.CompareTag("Obstacle"))
+            {
+                KillAlly(true);
+            }
         }
     }
 
