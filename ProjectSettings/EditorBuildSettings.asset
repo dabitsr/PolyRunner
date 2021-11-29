@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PolyRunnerThirdScene.unity
     guid: ad32bde333b8e4547983ea0468540293
+  - enabled: 1
+    path: Assets/Scenes/PolyRunnerFourthScene.unity
+    guid: 2c7b6b6c5a93a654d90c6b8c91feb6a6
   m_configObjects: {}
