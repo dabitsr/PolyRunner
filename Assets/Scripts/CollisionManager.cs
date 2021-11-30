@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class CollisionManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem particle, killParticle;
+    [SerializeField] AudioClip pickAudio, dieAudio;
 
     PlayerCounterSlider playerCounterSlider;
     PlayerScript playerScript;
     Animator anim;
-    AudioSource audio;
-    AudioClip pickAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +18,6 @@ public class CollisionManager : MonoBehaviour
         playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         playerCounterSlider = GameObject.Find("Slider").GetComponent<PlayerCounterSlider>();
         anim = GetComponent<Animator>();
-        if (gameObject.CompareTag("Player"))
-        {
-            audio = GetComponent<AudioSource>();
-            pickAudio = audio.clip;
-        }
     }
 
     // Update is called once per frame
@@ -34,8 +28,14 @@ public class CollisionManager : MonoBehaviour
     {
         if (gameObject.CompareTag("Ally"))
         {
-            if (collision.gameObject.CompareTag("Obstacle"))
+            if (collision.gameObject.CompareTag("People Obstacle"))
+            {
+                //KillAlly(false);
+            }
+            else if (collision.gameObject.CompareTag("Obstacle"))
+            {
                 KillAlly(true);
+            }
         }
     }
 
@@ -43,39 +43,44 @@ public class CollisionManager : MonoBehaviour
     {
         if (gameObject.CompareTag("Player") && other.gameObject.CompareTag("FloorPlayer"))
         {
+            AudioPlayerController.PlayAudio(pickAudio);
             AddAlly(other.gameObject.transform.position);
+            /*
             audio.clip = pickAudio;
             audio.Play();
+             */
         }
 
         if (gameObject.CompareTag("Ally"))
         {
-            if (other.gameObject.CompareTag("People Obstacle"))
+            if (other.CompareTag("People Obstacle"))
             {
-                anim.SetTrigger("punch");
-                KillAlly(false);
-            } else if (other.gameObject.CompareTag("Obstacle"))
+                //KillAlly(false);
+            } else if (other.CompareTag("Obstacle"))
             {
                 KillAlly(true);
             }
         }
     }
 
-    void KillAlly(bool explode)
+    public void KillAlly(bool explode)
     {
-        gameObject.tag = "Untagged";
         if (explode)
         {
+            AudioPlayerController.PlayAudio(dieAudio);
             ParticleSystem p = Instantiate(killParticle, transform.position, transform.rotation);
             p.Play();
             Destroy(gameObject);
+            UpdateUI(-1);
         }
         else
         {
+            anim.SetTrigger("punch");
+            gameObject.tag = "Untagged";
             gameObject.GetComponent<Movement>().stopMoving = true;
             StartCoroutine(DestroyGameObject(gameObject));
+            UpdateUI(0);
         }
-        UpdateUI(0);
     }
 
     IEnumerator DestroyGameObject(GameObject gameObject)
@@ -98,6 +103,6 @@ public class CollisionManager : MonoBehaviour
     {
         int n = GameObject.FindGameObjectsWithTag("Ally").Length;
         playerCounterSlider.SetSlider(n + i);
-        GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().SetPlayersCollected(n);
+        GameObject.Find("PlayersCounterUI").GetComponent<PlayersCollectedScript>().SetPlayersCollected(n + i);
     }
 }
