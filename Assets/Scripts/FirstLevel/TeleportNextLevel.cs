@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BalloonUPDown : MonoBehaviour
+public class TeleportNextLevel : MonoBehaviour
 {
+
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class BalloonUPDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.transform.position.z > 526) SceneManager.LoadScene("PolyRunnerSecondScene");
     }
 }
