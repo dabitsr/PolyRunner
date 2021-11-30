@@ -22,8 +22,8 @@ public class CarController : MonoBehaviour
         initSpeed = speed;
         audioSource = GetComponent<AudioSource>();
 
-        Invoke("PlayHornSound", Random.Range(0, 50));
-
+        if (hornAudios.Count > 0)
+            Invoke("PlayHornSound", Random.Range(0, 50));
     }
 
     void PlayHornSound()

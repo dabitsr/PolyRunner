@@ -5,11 +5,13 @@ using UnityEngine;
 public class NPCController : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] AudioClip punchSound;
     Animator anim;
     Rigidbody rb;
     CharacterController controller;
-    bool punching = false;
+    public bool punching = false;
     Quaternion initRotation;
+    BoxCollider boxCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +19,12 @@ public class NPCController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         initRotation = transform.rotation;
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        punching = anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Punch_LeftHand";
         if (!punching)
         {
             controller.Move(transform.TransformDirection(Vector3.forward) * speed * Time.deltaTime);
@@ -34,8 +36,14 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Ally"))
+        if ((other.gameObject.CompareTag("Ally")) && !punching)
         {
+            other.gameObject.GetComponent<CollisionManager>().KillAlly(false);
+            punching = true;
+            boxCollider.enabled = false;
+            rb.useGravity = false;
+            controller.enabled = false;
+            Invoke("PlayPunchSound", 0.2f);
             Vector3 targetDirection = other.transform.position - transform.position;
             transform.LookAt(targetDirection);
             anim.SetTrigger("punch");
@@ -49,5 +57,13 @@ public class NPCController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         transform.rotation = initRotation;
+        punching = false;
+        controller.enabled = true;
+        rb.useGravity = true;
+    }
+
+    void PlayPunchSound()
+    {
+        AudioPlayerController.PlayAudio(punchSound);
     }
 }

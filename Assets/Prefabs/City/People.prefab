@@ -8341,7 +8341,7 @@ GameObject:
   - component: {fileID: 4146234409097451649}
   - component: {fileID: 4146234409589760138}
   - component: {fileID: 4146234409589760137}
-  - component: {fileID: 4704057200661128749}
+  - component: {fileID: 147582076}
   m_Layer: 0
   m_Name: People
   m_TagString: People Obstacle
@@ -8399,6 +8399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  punchSound: {fileID: 8300000, guid: 0dddf082b6976ac449816a3a1b953747, type: 3}
+  punching: 0
 --- !u!54 &4146234409589760138
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8411,9 +8413,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &4146234409589760137
 BoxCollider:
@@ -8426,9 +8428,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38248807, y: 1.9367079, z: 0.2989587}
-  m_Center: {x: 0.0014932007, y: 0.96355706, z: 0.034305945}
---- !u!143 &4704057200661128749
+  m_Size: {x: 0.4, y: 1.9367079, z: 0.39}
+  m_Center: {x: 0.0014932007, y: 1.02, z: 0.034305945}
+--- !u!143 &147582076
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8440,12 +8442,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.16
+  m_Radius: 0.17
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.08, z: 0.04}
+  m_Center: {x: 0, y: 1, z: 0.03}
 --- !u!1 &4147603312340257267
 GameObject:
   m_ObjectHideFlags: 0
