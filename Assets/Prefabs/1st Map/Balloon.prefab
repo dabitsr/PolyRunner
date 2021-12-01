@@ -249,6 +249,7 @@ MonoBehaviour:
   maxHeight: 8
   t: 5
   particle: {fileID: 5470769835910003110}
+  useTorque: 1
 --- !u!1001 &5273031183899177704
 PrefabInstance:
   m_ObjectHideFlags: 0
