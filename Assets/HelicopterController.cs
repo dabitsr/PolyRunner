@@ -6,6 +6,7 @@ public class HelicopterController : MonoBehaviour
 {
     [SerializeField] float spinPropellerSpeed, speed, upSpeed, downSpeed, maxHeight, t;
     [SerializeField] ParticleSystem particle = null;
+    [SerializeField] bool useTorque;
     Transform mainPropeller, smallPropeller;
     Rigidbody rb;
     // Start is called before the first frame update
@@ -27,7 +28,9 @@ public class HelicopterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddTorque(Vector3.up * Time.deltaTime, ForceMode.Impulse);
+        if (useTorque)
+            rb.AddTorque(Vector3.up * Time.deltaTime, ForceMode.Impulse);
+
         if (transform.position.y > maxHeight - maxHeight / 3)
         {
             speed = Mathf.Lerp(speed, downSpeed, t);
