@@ -21,6 +21,7 @@ TagManager:
   - Player Sensor
   - StopSensor
   - PlayerCollider
+  - Water
   layers:
   - Default
   - TransparentFX

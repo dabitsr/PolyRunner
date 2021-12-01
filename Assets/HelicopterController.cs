@@ -5,14 +5,18 @@ using UnityEngine;
 public class HelicopterController : MonoBehaviour
 {
     [SerializeField] float spinPropellerSpeed, speed, upSpeed, downSpeed, maxHeight, t;
+    [SerializeField] ParticleSystem particle = null;
     Transform mainPropeller, smallPropeller;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        mainPropeller = transform.GetChild(0);
-        smallPropeller = transform.GetChild(1);
+        if (spinPropellerSpeed > 0)
+        {
+            mainPropeller = transform.GetChild(0);
+            smallPropeller = transform.GetChild(1);
+        }
         upSpeed += Random.Range(0, upSpeed / 3);
         speed = upSpeed;
 
@@ -23,12 +27,22 @@ public class HelicopterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.AddTorque(Vector3.up * Time.deltaTime, ForceMode.Impulse);
         if (transform.position.y > maxHeight - maxHeight / 3)
+        {
             speed = Mathf.Lerp(speed, downSpeed, t);
+            if (particle != null)
+                particle.Stop();
+        }
         else if (transform.position.y <= maxHeight / 4)
+        {
             speed = Mathf.Lerp(speed, upSpeed, t);
+            if (particle != null)
+                particle.Play();
+        }
         rb.AddForce(Vector3.up * speed * Time.deltaTime, ForceMode.Impulse);
-        SpinPropellers();
+        if (spinPropellerSpeed > 0)
+            SpinPropellers();
     }
 
     void SpinPropellers()

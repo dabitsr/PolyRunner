@@ -23,9 +23,7 @@ public class GameManager : MonoBehaviour
         if (bounds.Count > 1)
         {
             maxLeft = bounds[0].gameObject.transform.position.x + offset;
-            print(maxLeft);
             maxRight = bounds[1].gameObject.transform.position.x - offset;
-            print(maxRight);
         }
         else
         {
