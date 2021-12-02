@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class NavMeshController : MonoBehaviour
 {
     [SerializeField] Transform destination;
+    [SerializeField] bool updateDestination;
+
     NavMeshAgent agent;
 
     // Start is called before the first frame update
@@ -18,6 +20,8 @@ public class NavMeshController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (updateDestination)
+            agent.destination = destination.position;
     }
 
     public void SetDestination(Transform destination)

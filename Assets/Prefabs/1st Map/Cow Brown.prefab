@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: -5143098680303726798}
   m_Layer: 0
   m_Name: Cow Brown
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!65 &-6432243853719350554
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: -648028478440233823}
   m_Layer: 0
   m_Name: Cow Black-White
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2145,7 +2145,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!65 &-786650828761645342
 BoxCollider:
   m_ObjectHideFlags: 0

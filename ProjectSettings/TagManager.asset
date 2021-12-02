@@ -22,6 +22,8 @@ TagManager:
   - StopSensor
   - PlayerCollider
   - Water
+  - Nav Mesh Link
+  - Jump Sensor
   layers:
   - Default
   - TransparentFX
