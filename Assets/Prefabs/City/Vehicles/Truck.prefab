@@ -44,8 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b518c3aaad31ae4fbd95743178e9743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirt: {fileID: 5972486494749715306, guid: baa874c576784664c9cdcdb91ba8f6db, type: 3}
+  objects: []
   throwForce: 500
+  repeatRate: 0
+  maxForce: 0
+  minForce: 0
+  useThrowerTransform: 0
 --- !u!1 &7476373122387462057
 GameObject:
   m_ObjectHideFlags: 0

@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 3168394081231684438}
   m_Layer: 0
   m_Name: car-ambulance-pickup
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
