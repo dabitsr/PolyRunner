@@ -29,6 +29,11 @@ public class DespawnerController : MonoBehaviour
     void Despawn(GameObject g)
     {
         if (!g.CompareTag("Player") && !g.CompareTag("Ally") && !g.CompareTag("FloorPlayer"))
-            Destroy(g.transform.parent.gameObject);
+        {
+            if (g.CompareTag("People Obstacle"))
+                Destroy(g);
+            else
+                Destroy(g.transform.parent.gameObject);
+        }
     }
 }
