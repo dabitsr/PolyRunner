@@ -13,7 +13,7 @@ public class SpawnPointController : MonoBehaviour
     void Start()
     {
         if (randomRepeatRate)
-            Invoke("SpawnRandomCar", Random.Range(repeatRate / 2, repeatRate * 1.5f));
+            Invoke("SpawnRandomCar", 0);
         else 
             InvokeRepeating("SpawnRandomCar", 1, repeatRate);
     }
