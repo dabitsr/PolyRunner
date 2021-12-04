@@ -6,6 +6,7 @@ public class ShipMovement : MonoBehaviour
 {
     public GameObject player;
     AudioSource audio;
+    bool first = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,11 @@ public class ShipMovement : MonoBehaviour
             transform.position += new Vector3(Time.deltaTime * 30, 0, 0);
             transform.position += transform.up * Time.deltaTime * 20;
             transform.Rotate(1.0f * Time.deltaTime * 4, 0.0f, 0.0f, Space.Self);
-        } if (player.transform.position.z >= 60) audio.mute = true;
+            if (first)
+            {
+                audio.Play();
+                first = false;
+            }
+        }
     }
 }
