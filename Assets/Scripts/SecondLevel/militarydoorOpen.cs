@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpen : MonoBehaviour
+public class militarydoorOpen : MonoBehaviour
 {
-
-    public GameObject leftDoor;
-    public GameObject rightDoor;
     public GameObject player;
+    public GameObject door;
     AudioSource audio;
     bool first = true;
     // Start is called before the first frame update
@@ -19,15 +17,14 @@ public class DoorOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z >= -25)
+        if (player.transform.position.z >= 180)
         {
             if (first)
             {
                 audio.Play();
                 first = false;
             }
-            leftDoor.transform.position += new Vector3(-Time.deltaTime*2, 0, 0);
-            rightDoor.transform.position += new Vector3(Time.deltaTime*2, 0, 0);
+            door.transform.position += new Vector3(-Time.deltaTime * 3, 0, 0);
         }
     }
 }
