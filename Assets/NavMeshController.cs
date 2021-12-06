@@ -14,7 +14,8 @@ public class NavMeshController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = destination.position;
+        if (destination.position != null)
+            agent.destination = destination.position;
     }
 
     // Update is called once per frame
