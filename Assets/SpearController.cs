@@ -22,6 +22,13 @@ public class SpearController : MonoBehaviour
         }
         if (stopCount > 10 || transform.position.y < -10)
             Destroy(gameObject);
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

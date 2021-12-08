@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,10 +31,18 @@ public class DespawnerController : MonoBehaviour
     {
         if (!g.CompareTag("Player") && !g.CompareTag("Ally") && !g.CompareTag("FloorPlayer"))
         {
-            if (g.CompareTag("People Obstacle"))
+            try
+            {
+                Destroy(g.transform.parent.gameObject);
+            } catch(Exception e)
+            {
                 Destroy(g);
+            }
+            /*
+            if (g.CompareTag("People Obstacle"))
             else
                 Destroy(g.transform.parent.gameObject);
+            */
         }
     }
 }
