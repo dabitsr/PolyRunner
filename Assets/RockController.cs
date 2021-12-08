@@ -32,6 +32,8 @@ public class RockController : MonoBehaviour
 
         if (fading)
         {
+            GetComponent<MeshCollider>().isTrigger = true;
+            gameObject.tag = "Untagged";
             a = Mathf.Lerp(a, 0, timeToFade * Time.deltaTime);
             GetComponent<MeshRenderer>().material.color = new Color(c.r, c.g, c.b, a);
             if (a <= 0.03f)

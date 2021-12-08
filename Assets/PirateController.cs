@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class PirateController : MonoBehaviour
 {
-    NavMeshAgent agent;
+    [SerializeField] AudioClip punchSound;
+
     Animator anim;
     bool punching = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
 
@@ -34,8 +34,9 @@ public class PirateController : MonoBehaviour
             Invoke("PlayPunchSound", 0.2f);
             Vector3 targetDirection = other.transform.position - transform.position;
             transform.LookAt(targetDirection);
-            anim.SetTrigger("punch");
+            anim.SetBool("isPunching", true);
             StartCoroutine(ResetRotation());
+            GetComponent<NavMeshController>().SetDestination(transform);
         }
         if (other.gameObject.CompareTag("Despawner"))
             Destroy(gameObject);
@@ -45,5 +46,10 @@ public class PirateController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         punching = false;
+    }
+
+    void PlayPunchSound()
+    {
+        AudioPlayerController.PlayAudio(punchSound);
     }
 }
