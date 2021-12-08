@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject firstPlatform, floor, floorPlayerPrefab;
     public int floorPlayersCount;
 
-    float maxLeft, maxRight;
+    static float maxLeft, maxRight;
     GameObject player;
     Vector3 firstPlatformPos, platformSize;
 
@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float getMaxLeft()
+    public static float getMaxLeft()
     {
         return maxLeft;
     }
 
-    public float getMaxRight()
+    public static float getMaxRight()
     {
         return maxRight;
     }
