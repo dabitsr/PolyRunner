@@ -7303,7 +7303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  useSensor: 0
+  stopMoving: 0
 --- !u!114 &1669080025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7318,6 +7318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 49627805397982963}
   killParticle: {fileID: 7955846979612901530}
+  pickAudio: {fileID: 8300000, guid: 4af3ca3646f321843b8673c558dd1325, type: 3}
+  dieAudio: {fileID: 8300000, guid: e5e7708db52409747bd2f9ea639a2495, type: 3}
 --- !u!136 &4848533233355812730
 CapsuleCollider:
   m_ObjectHideFlags: 0
