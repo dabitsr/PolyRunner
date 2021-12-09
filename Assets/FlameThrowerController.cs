@@ -7,11 +7,11 @@ public class FlameThrowerController : MonoBehaviour
     [SerializeField] ParticleSystem flame;
     [SerializeField] float flameTime, preFlameTime;
 
-    int currentFlame = -1, nextFlame = -1;
+    int currentFlame = -1, nextFlame = 0;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(NextFlame(preFlameTime));
+        //StartCoroutine(NextFlame(preFlameTime));
         InvokeRepeating("StartFlame", preFlameTime, flameTime);
     }
 
