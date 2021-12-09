@@ -175,12 +175,24 @@ public class MenuManager : MonoBehaviour
 
         else if (pressedFourth)
         {
-            SceneManager.LoadScene("PolyRunnerFourthScene");
+            frame[2].SetActive(false);
+            frame2_cam.gameObject.SetActive(false);
+            frame3_cam.gameObject.SetActive(true);
+            frame3_cam.transform.position += frame3_cam.transform.forward * Time.deltaTime * 2;
+            westTrain.transform.position += westTrain.transform.forward * Time.deltaTime * 2;
+
+            if (westTrain.transform.position.x > 65) SceneManager.LoadScene("PolyRunnerFourthScene");
         }
 
         else if (pressedFifth)
         {
-            SceneManager.LoadScene("PolyRunnerFifthScene");
+            frame[2].SetActive(false);
+            frame2_cam.gameObject.SetActive(false);
+            frame3_cam.gameObject.SetActive(true);
+            frame3_cam.transform.position += frame3_cam.transform.forward * Time.deltaTime * 2;
+            westTrain.transform.position += westTrain.transform.forward * Time.deltaTime * 2;
+
+            if (westTrain.transform.position.x > 65) SceneManager.LoadScene("PolyRunnerFifthScene");
         }
 
 
