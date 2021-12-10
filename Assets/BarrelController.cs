@@ -5,9 +5,11 @@ using UnityEngine;
 public class BarrelController : MonoBehaviour
 {
     [SerializeField] float force;
+    [SerializeField] int pushes;
 
     Vector3 d = Vector3.zero;
     float initMagnitude;
+    int currentPushes = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,15 @@ public class BarrelController : MonoBehaviour
     {
         if (d != Vector3.zero)
         {
+            if (currentPushes < pushes)
+            {
+                currentPushes++;
+                GetComponent<Rigidbody>().AddForce(d * force * Time.deltaTime, ForceMode.Impulse);
+            }
+            /*
             if ((d - transform.position).magnitude > 3/4*initMagnitude)
                 GetComponent<Rigidbody>().AddForce(d * force * Time.deltaTime, ForceMode.Impulse);
+            */
         }
     }
 

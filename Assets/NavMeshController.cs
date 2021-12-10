@@ -32,4 +32,11 @@ public class NavMeshController : MonoBehaviour
         this.destination = destination;
         agent.destination = this.destination.position;
     }
+
+    public void SetDestination(Vector3 destination)
+    {
+        agent = GetComponent<NavMeshAgent>();
+        this.destination.position = destination;
+        agent.destination = this.destination.position;
+    }
 }

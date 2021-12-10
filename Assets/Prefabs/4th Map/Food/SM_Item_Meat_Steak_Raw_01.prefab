@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 25
+  pushes: 200
 --- !u!114 &9206437254406849872
 MonoBehaviour:
   m_ObjectHideFlags: 0

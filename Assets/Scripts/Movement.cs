@@ -62,13 +62,14 @@ public class Movement : MonoBehaviour
 
     void movePlayer()
     {
-        float move = Mathf.Clamp(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, maxLeft, maxRight);
-        transform.position = new Vector3(move, transform.position.y, transform.position.z + speed * Time.deltaTime);
         /*
+        float move = Mathf.Clamp(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, maxLeft, maxRight);
+        //transform.position = new Vector3(move, transform.position.y, transform.position.z + speed * Time.deltaTime);
+        */
+        float move = Input.GetAxis("Horizontal");
         if (transform.position.x >= maxRight && move > 0) move = 0;
         else if (transform.position.x <= maxLeft && move < 0) move = 0;
         transform.Translate(new Vector3(move * speed * Time.deltaTime, 0, speed * Time.deltaTime));
-        */
     }
 
     public void setPosRelativeToPlayer(Vector2 newPos)

@@ -35,14 +35,12 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
         if (stop)
             speed = Mathf.Lerp(speed, 0, t * Time.deltaTime);
 
-        if (transform.rotation.x < 90 && transform.rotation.z < 90)
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        */
         if (!stop)
             foreach (GameObject wheel in wheels)
                 wheel.transform.Rotate(Vector3.right * wheelRotationSpeed * Time.deltaTime);
