@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour
     public Button SecondLevelButton;
     public Button ThirdLevelButton;
     public Button FourthLevelButton;
+    public Button FifthLevelButton;
 
     public Button InstructionsButton;
     public Button CreditsButton;
@@ -41,6 +42,7 @@ public class MenuManager : MonoBehaviour
     private bool pressedSecond;
     private bool pressedThird;
     private bool pressedFourth;
+    private bool pressedFifth;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +72,11 @@ public class MenuManager : MonoBehaviour
 
         Button btn5 = FourthLevelButton.GetComponent<Button>();
         btn5.onClick.AddListener(TaskOnClickFourth);
+
+        pressedFifth = false;
+
+        Button btn6 = FifthLevelButton.GetComponent<Button>();
+        btn6.onClick.AddListener(TaskOnClickFifth);
 
         /* INSTRUCTIONS */
 
@@ -168,7 +175,24 @@ public class MenuManager : MonoBehaviour
 
         else if (pressedFourth)
         {
-            SceneManager.LoadScene("PolyRunnerFourthScene");
+            frame[2].SetActive(false);
+            frame2_cam.gameObject.SetActive(false);
+            frame3_cam.gameObject.SetActive(true);
+            frame3_cam.transform.position += frame3_cam.transform.forward * Time.deltaTime * 2;
+            westTrain.transform.position += westTrain.transform.forward * Time.deltaTime * 2;
+
+            if (westTrain.transform.position.x > 65) SceneManager.LoadScene("PolyRunnerFourthScene");
+        }
+
+        else if (pressedFifth)
+        {
+            frame[2].SetActive(false);
+            frame2_cam.gameObject.SetActive(false);
+            frame3_cam.gameObject.SetActive(true);
+            frame3_cam.transform.position += frame3_cam.transform.forward * Time.deltaTime * 2;
+            westTrain.transform.position += westTrain.transform.forward * Time.deltaTime * 2;
+
+            if (westTrain.transform.position.x > 65) SceneManager.LoadScene("PolyRunnerFifthScene");
         }
 
 
@@ -205,6 +229,11 @@ public class MenuManager : MonoBehaviour
     void TaskOnClickFourth()
     {
         pressedFourth = true;
+    }
+
+    void TaskOnClickFifth()
+    {
+        pressedFifth = true;
     }
 
     void TaskOnClickInstructions()
