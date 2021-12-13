@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     public Button InstructionsButton;
     public Button CreditsButton;
     public Button OptionsButton;
+    public Button ExitButton;
 
     public GameObject westTrain;
     public GameObject scifiBalloon;
@@ -94,11 +95,21 @@ public class MenuManager : MonoBehaviour
         Button optButton = OptionsButton.GetComponent<Button>();
         optButton.onClick.AddListener(TaskOnClickOptions);
 
+                /* Exit */
+
+        Button exitButton = ExitButton.GetComponent<Button>();
+        exitButton.onClick.AddListener(TaskOnClickExit);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("escape") && frame[0].activeInHierarchy)
+        {
+            Application.Quit();
+        }
+
         if (Input.anyKeyDown && frame[0].activeInHierarchy)
         {
             frame[0].SetActive(false);
@@ -294,6 +305,11 @@ public class MenuManager : MonoBehaviour
         frame5_cam.gameObject.SetActive(false);
         frame6_cam.gameObject.SetActive(false);
         frame7_cam.gameObject.SetActive(true);
+    }
+
+    void TaskOnClickExit()
+    {
+        Application.Quit();
     }
 
 }
