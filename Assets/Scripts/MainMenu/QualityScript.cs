@@ -31,7 +31,24 @@ public class QualityScript : MonoBehaviour
 
     public void SetFullScreen(bool isFullScreen)
     {
+        if (Screen.fullScreen)
+        {
+            Screen.SetResolution(1920, 1080, false);
+        }
+        else
+        {
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+        }
+        /*
         Screen.fullScreen = isFullScreen;
+        if (Screen.fullScreen)
+        {
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }*/
     }
 
 }
