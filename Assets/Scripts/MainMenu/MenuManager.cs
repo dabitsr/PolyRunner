@@ -33,6 +33,8 @@ public class MenuManager : MonoBehaviour
 
     public Button InstructionsButton;
     public Button CreditsButton;
+    public Button OptionsButton;
+    public Button ExitButton;
 
     public GameObject westTrain;
     public GameObject scifiBalloon;
@@ -78,7 +80,7 @@ public class MenuManager : MonoBehaviour
         Button btn6 = FifthLevelButton.GetComponent<Button>();
         btn6.onClick.AddListener(TaskOnClickFifth);
 
-        /* INSTRUCTIONS */
+                /* INSTRUCTIONS */
 
         Button instButton = InstructionsButton.GetComponent<Button>();
         instButton.onClick.AddListener(TaskOnClickInstructions);
@@ -88,11 +90,26 @@ public class MenuManager : MonoBehaviour
         Button credButton = CreditsButton.GetComponent<Button>();
         credButton.onClick.AddListener(TaskOnClickCredits);
 
+                /* OPTIONS */
+
+        Button optButton = OptionsButton.GetComponent<Button>();
+        optButton.onClick.AddListener(TaskOnClickOptions);
+
+                /* Exit */
+
+        Button exitButton = ExitButton.GetComponent<Button>();
+        exitButton.onClick.AddListener(TaskOnClickExit);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("escape") && frame[0].activeInHierarchy)
+        {
+            Application.Quit();
+        }
+
         if (Input.anyKeyDown && frame[0].activeInHierarchy)
         {
             frame[0].SetActive(false);
@@ -134,6 +151,14 @@ public class MenuManager : MonoBehaviour
             {
                 frame[1].SetActive(true);
                 frame[4].SetActive(false);
+                ES.SetSelectedGameObject(startButton);
+                frame1_cam.gameObject.SetActive(true);
+                frame7_cam.gameObject.SetActive(false);
+            }
+            else if (frame[5].activeInHierarchy)
+            {
+                frame[1].SetActive(true);
+                frame[5].SetActive(false);
                 ES.SetSelectedGameObject(startButton);
                 frame1_cam.gameObject.SetActive(true);
                 frame7_cam.gameObject.SetActive(false);
@@ -209,6 +234,8 @@ public class MenuManager : MonoBehaviour
         frame3_cam.gameObject.SetActive(false);
         frame4_cam.gameObject.SetActive(false);
         frame5_cam.gameObject.SetActive(false);
+        frame6_cam.gameObject.SetActive(false);
+        frame7_cam.gameObject.SetActive(false);
     }
 
     void TaskOnClickFirst()
@@ -263,6 +290,26 @@ public class MenuManager : MonoBehaviour
         frame5_cam.gameObject.SetActive(false);
         frame6_cam.gameObject.SetActive(false);
         frame7_cam.gameObject.SetActive(true);
+    }
+
+    void TaskOnClickOptions()
+    {
+        frame[1].SetActive(false);
+        frame[5].SetActive(true);
+        ES.SetSelectedGameObject(startButton);
+        frame0_cam.gameObject.SetActive(false);
+        frame1_cam.gameObject.SetActive(false);
+        frame2_cam.gameObject.SetActive(false);
+        frame3_cam.gameObject.SetActive(false);
+        frame4_cam.gameObject.SetActive(false);
+        frame5_cam.gameObject.SetActive(false);
+        frame6_cam.gameObject.SetActive(false);
+        frame7_cam.gameObject.SetActive(true);
+    }
+
+    void TaskOnClickExit()
+    {
+        Application.Quit();
     }
 
 }
