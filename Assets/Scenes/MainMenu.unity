@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22297093, g: 0.14778435, b: 0.28205082, a: 1}
+  m_IndirectSpecularColor: {r: 0.22280303, g: 0.14755741, b: 0.2819287, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3276,7 +3276,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5891,7 +5891,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6191,7 +6191,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6385,7 +6385,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8219,7 +8219,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9139,7 +9139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PLAYER\n\t\xB7 The followrs move straight forward with an specific speed.\n\t\xB7
+  m_text: "PLAYER\n\t\xB7 The followers move straight forward with an specific speed.\n\t\xB7
     The group can be moved with the keys A and D to avoid \n\tobstacles.\n\t\xB7
     There is a camera following the group in a 3rd person view.\n\t\xB7 The players
     can not leave the running area.\n\nSTORY\n\t\xB7 Arround 5 years ago some weird
@@ -9676,7 +9676,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14177,7 +14177,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18001,7 +18001,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0276244, y: 1}
+    m_SensorSize: {x: 1.2121547, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
