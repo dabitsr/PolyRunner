@@ -63,7 +63,7 @@ MonoBehaviour:
   blinkRate: 2
   diffSpeed: 1.5
   lightTime: 10
-  distance: 35
+  distance: 30
   explodeTime: 3
   light: {fileID: 5814574404874866583}
   player: {fileID: 0}

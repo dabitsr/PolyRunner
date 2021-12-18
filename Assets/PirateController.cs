@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class PirateController : MonoBehaviour
 {
     [SerializeField] AudioClip punchSound;
+    [SerializeField] bool dontUseNav = false;
 
     Animator anim;
     bool punching = false;
@@ -36,7 +37,8 @@ public class PirateController : MonoBehaviour
             transform.LookAt(targetDirection);
             anim.SetBool("isPunching", true);
             StartCoroutine(ResetRotation());
-            GetComponent<NavMeshController>().SetDestination(transform);
+            if (!dontUseNav)
+                GetComponent<NavMeshController>().SetDestination(transform);
         }
         if (other.gameObject.CompareTag("Despawner"))
             Destroy(gameObject);
