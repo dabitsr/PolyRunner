@@ -10,7 +10,10 @@ public class ObjectThrower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Throw", Random.Range(2, 8));
+        if (repeatRate != 0)
+            InvokeRepeating("Throw", 0, repeatRate);
+        else
+            Invoke("Throw", Random.Range(2, 8));
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class ObjectThrower : MonoBehaviour
             d.GetComponent<Rigidbody>().AddRelativeForce(Random.Range(-throwForce / 4, throwForce / 4), Random.Range(throwForce / 2, throwForce), 0, ForceMode.Impulse);
         d.GetComponent<Rigidbody>().AddTorque(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10), ForceMode.Impulse);
 
-        Invoke("Throw", Random.Range(2, 8));
+        if (repeatRate == 0)
+            Invoke("Throw", Random.Range(2, 8));
     }
 }

@@ -8836,6 +8836,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 4af3ca3646f321843b8673c558dd1325, type: 3}
     - target: {fileID: 378451967952768230, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
+      propertyPath: spawnPoint.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 378451967952768230, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
       propertyPath: spawnPoint.z
       value: -10
       objectReference: {fileID: 0}
@@ -15091,7 +15095,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4af3ca3646f321843b8673c558dd1325, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.092
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -9,11 +9,15 @@ public class NavMeshController : MonoBehaviour
     [SerializeField] bool updateDestination;
 
     NavMeshAgent agent;
+    AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
+
+        Invoke("PlaySound", Random.Range(2, 10));
         if (destination != null)
             agent.destination = destination.position;
         else destination = transform;
@@ -38,5 +42,10 @@ public class NavMeshController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         this.destination.position = destination;
         agent.destination = this.destination.position;
+    }
+
+    void PlaySound()
+    {
+        audio.Play();
     }
 }
