@@ -23,8 +23,8 @@ public class PeopleSpawnerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > transform.position.z)
-            Destroy(gameObject);
+        //if (player.transform.position.z > transform.position.z)
+          //  Destroy(gameObject);
     }
 
     void SpawnPeople()
