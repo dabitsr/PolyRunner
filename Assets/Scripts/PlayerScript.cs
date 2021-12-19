@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public struct initBoxColliderStruct
@@ -17,6 +19,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] BoxCollider boxCollider;
     [SerializeField] ParticleSystem lvlUpParticle;
     [SerializeField] AudioClip lvlUpAudio;
+    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] Text alliesText;
+    [SerializeField] Slider alliesSlider;
 
     float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
@@ -25,9 +30,12 @@ public class PlayerScript : MonoBehaviour
     Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
     int allies, lvl = 0;
     AudioSource audio;
+    PlayerCounterSlider playerCounterSlider;
 
     void Start()
     {
+        playerCounterSlider = GameObject.Find("Slider").GetComponent<PlayerCounterSlider>();
+        levelText.SetText(lvl.ToString());
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
@@ -176,12 +184,15 @@ public class PlayerScript : MonoBehaviour
             a[i].GetComponent<Movement>().moveTowardsPlayer = true;
         }
 
-        Invoke("DeleteAllAllies", 0);
+        DeleteAllAllies();
     }
 
     void DeleteAllAllies()
     {
+        playerCounterSlider.SetSlider(0);
+        alliesText.text = "0/24";
         lvl++;
+        levelText.SetText(lvl.ToString());
         print("Level: " + lvl);
         lvlUpParticle.Play();
 
