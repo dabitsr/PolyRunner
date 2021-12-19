@@ -8,6 +8,7 @@ public class MineController : MonoBehaviour
     [SerializeField] Light light;
     [SerializeField] Transform player;
     [SerializeField] ParticleSystem explosion;
+    [SerializeField] AudioSource audio;
 
     bool started = false;
 
@@ -22,6 +23,7 @@ public class MineController : MonoBehaviour
         if (transform.position.z - player.position.z < distance && !started)
         {
             Blink();
+            audio.Play();
             started = true;
         }
     }

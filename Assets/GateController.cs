@@ -5,12 +5,14 @@ using UnityEngine;
 public class GateController : MonoBehaviour
 {
     [SerializeField] float closedHieght, openedHeight, t;
-
+    
+    AudioSource audio;
     bool opening = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         transform.position = new Vector3(transform.position.x, closedHieght, transform.position.z);
     }
 
@@ -27,5 +29,6 @@ public class GateController : MonoBehaviour
     public void Open()
     {
         opening = true;
+        audio.Play();
     }
 }
