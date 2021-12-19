@@ -16,6 +16,6 @@ public class TeleportNextLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > 526) SceneManager.LoadScene("PolyRunnerSecondScene");
+        if (player.transform.position.z >= transform.position.z) SceneManager.LoadScene("PolyRunnerSecondScene");
     }
 }
