@@ -6,6 +6,7 @@ public class PlaneController : MonoBehaviour
 {
     [SerializeField] float speed, rotationSpeed;
     [SerializeField] GameObject activate;
+    [SerializeField] AudioClip planeAudio;
 
     AudioSource audio;
     public bool move = false, fly = false;

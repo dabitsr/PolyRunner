@@ -27,7 +27,6 @@ public class CannonBallController : MonoBehaviour
             Instantiate(explosionParticle, transform.position, Quaternion.Euler(Vector3.zero), transform).Play();
             GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0, 0);
             Invoke("Delete", 3);
-            print("ASS");
         }
         else
             Instantiate(collisionParticle, transform.position, Quaternion.Euler(Vector3.zero), transform).Play();

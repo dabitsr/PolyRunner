@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public float expandX, expandZ;
     [SerializeField] BoxCollider boxCollider;
     [SerializeField] ParticleSystem lvlUpParticle;
+    [SerializeField] AudioClip lvlUpAudio;
 
     float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
@@ -165,7 +166,7 @@ public class PlayerScript : MonoBehaviour
 
     public void LevelUp()
     {
-
+        AudioPlayerController.PlayAudio(lvlUpAudio);
         GameObject[] a = GameObject.FindGameObjectsWithTag("Ally");
 
         for (int i = 0; i < a.Length; i++)
@@ -175,7 +176,7 @@ public class PlayerScript : MonoBehaviour
             a[i].GetComponent<Movement>().moveTowardsPlayer = true;
         }
 
-        Invoke("DeleteAllAllies", 0.5f);
+        Invoke("DeleteAllAllies", 0);
     }
 
     void DeleteAllAllies()

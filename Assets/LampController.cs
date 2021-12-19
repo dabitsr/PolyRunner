@@ -11,7 +11,10 @@ public class LampController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] int forcePushes;
 
+    [SerializeField] AudioSource glassAudio, fireAudio;
+
     int currentPushes = 0;
+    bool audioPlayed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +42,24 @@ public class LampController : MonoBehaviour
         {
             flames.transform.eulerAngles = Vector3.forward * -90;
             flames.Play();
+            if (!audioPlayed)
+            {
+                glassAudio.Play();
+                fireAudio.Play();
+                audioPlayed = true;
+            }
         }
 
         if (!fallLeft && transform.eulerAngles.z <= 272 && transform.eulerAngles.z >= 100)
         {
             flames.transform.eulerAngles = Vector3.forward * 90;
             flames.Play();
+            if (!audioPlayed)
+            {
+                glassAudio.Play();
+                fireAudio.Play();
+                audioPlayed = true;
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ public class DynamiteController : MonoBehaviour
     [SerializeField] ParticleSystem explosion, fire;
     [SerializeField] float timeToExplode;
     [SerializeField] Collider explosionCollider;
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioClip[] audioClips;
 
     Color c;
 
@@ -26,6 +28,7 @@ public class DynamiteController : MonoBehaviour
 
     void Explode()
     {
+        audio.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
         explosion.Play();
         int a = 0;
         gameObject.GetComponent<MeshRenderer>().material.color = new Color(c.r, c.g, c.b, a);
