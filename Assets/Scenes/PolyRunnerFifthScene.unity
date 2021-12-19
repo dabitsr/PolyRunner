@@ -3772,6 +3772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301ebe0ebc884b144b2f67134b22e96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraOffset: 0
   bounds:
   - {fileID: 1163554754}
   - {fileID: 1770604182}
@@ -10525,7 +10526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 382964066194020977, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 382964066194020977, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12811,7 +12812,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1128379284}
   - component: {fileID: 1128379283}
-  - component: {fileID: 1128379282}
   - component: {fileID: 1128379285}
   - component: {fileID: 1128379286}
   - component: {fileID: 1128379287}
@@ -12823,14 +12823,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1128379282
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128379281}
-  m_Enabled: 1
 --- !u!20 &1128379283
 Camera:
   m_ObjectHideFlags: 0
@@ -14384,7 +14376,7 @@ RectTransform:
   m_Children:
   - {fileID: 304775852}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17063,7 +17055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5047601811145372456, guid: b1b35a4aa47e8204490ce8f0973de9e9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5047601811145372456, guid: b1b35a4aa47e8204490ce8f0973de9e9, type: 3}
       propertyPath: m_AnchorMax.x

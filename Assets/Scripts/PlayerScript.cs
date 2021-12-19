@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public struct initBoxColliderStruct
 {
@@ -14,14 +15,16 @@ public class PlayerScript : MonoBehaviour
     public GameObject playerAllyPrefab;
     public float expandX, expandZ;
     [SerializeField] BoxCollider boxCollider;
+    [SerializeField] ParticleSystem lvlUpParticle;
 
     float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
     Animator anim;
     initBoxColliderStruct initBox;
     Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
-    int allies;
+    int allies, lvl = 0;
     AudioSource audio;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -37,12 +40,12 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Ally").Length < allies)
-        {
-            RepositionAllies();
-            allies = GameObject.FindGameObjectsWithTag("Ally").Length;
-        }
-        else allies = GameObject.FindGameObjectsWithTag("Ally").Length;
+        int a = GameObject.FindGameObjectsWithTag("Ally").Length;
+        if (a >= 24) LevelUp();
+
+        if (a < allies) RepositionAllies();
+        
+        allies = a;
     }
 
     public void collectAlly(int n, GameObject existingAlly)
@@ -153,6 +156,40 @@ public class PlayerScript : MonoBehaviour
     {
         audio.clip = a;
         audio.Play();
+    }
+
+    private void OnDestroy()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LevelUp()
+    {
+
+        GameObject[] a = GameObject.FindGameObjectsWithTag("Ally");
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            a[i].GetComponent<Rigidbody>().useGravity = false;
+            a[i].GetComponent<BoxCollider>().isTrigger = true;
+            a[i].GetComponent<Movement>().moveTowardsPlayer = true;
+        }
+
+        Invoke("DeleteAllAllies", 0.5f);
+    }
+
+    void DeleteAllAllies()
+    {
+        lvl++;
+        print("Level: " + lvl);
+        lvlUpParticle.Play();
+
+        GameObject[] a = GameObject.FindGameObjectsWithTag("Ally");
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            Destroy(a[i]);
+        }
     }
 }
 

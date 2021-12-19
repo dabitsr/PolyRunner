@@ -18,7 +18,7 @@ public class RockController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (transform.position.y < -10)
             Destroy(gameObject);
@@ -34,7 +34,7 @@ public class RockController : MonoBehaviour
         {
             GetComponent<MeshCollider>().isTrigger = true;
             gameObject.tag = "Untagged";
-            a = Mathf.Lerp(a, 0, timeToFade * Time.deltaTime);
+            a = Mathf.Lerp(a, 0, timeToFade * Time.fixedDeltaTime);
             GetComponent<MeshRenderer>().material.color = new Color(c.r, c.g, c.b, a);
             if (a <= 0.03f)
                 Destroy(gameObject);

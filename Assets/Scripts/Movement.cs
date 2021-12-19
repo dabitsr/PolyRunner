@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float speed;
-    public bool stopMoving = false;
+    public bool stopMoving = false, moveTowardsPlayer = false;
     
     float maxLeft, maxRight;
     GameObject player;
@@ -35,8 +35,18 @@ public class Movement : MonoBehaviour
     {
         Vector3 move = Vector3.zero;
         // Offsets del jugador respecto a la posición que debería tener
-        float xOffset = (transform.position.x - player.transform.position.x) - posRelativeToPlayer.x;
-        float zOffset = (transform.position.z - player.transform.position.z) - posRelativeToPlayer.y;
+        float xOffset;
+        float zOffset;
+
+        if (moveTowardsPlayer)
+        {
+            xOffset = (transform.position.x - player.transform.position.x);
+            zOffset = (transform.position.z - player.transform.position.z);
+        } else
+        {
+            xOffset = (transform.position.x - player.transform.position.x) - posRelativeToPlayer.x;
+            zOffset = (transform.position.z - player.transform.position.z) - posRelativeToPlayer.y;
+        }
 
         move.x = Input.GetAxis("Horizontal");
         if (transform.position.x >= maxRight)

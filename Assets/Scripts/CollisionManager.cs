@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CollisionManager : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class CollisionManager : MonoBehaviour
             else if (collision.gameObject.CompareTag("Obstacle"))
             {
                 KillAlly(true);
+
+                if (gameObject.CompareTag("Player"))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
@@ -59,6 +63,9 @@ public class CollisionManager : MonoBehaviour
             } else if (other.CompareTag("Obstacle"))
             {
                 KillAlly(true);
+
+                if (gameObject.CompareTag("Player"))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
