@@ -52,9 +52,14 @@ public class PlayerScript : MonoBehaviour
         int a = GameObject.FindGameObjectsWithTag("Ally").Length;
         if (a >= 24) LevelUp();
 
-        if (a < allies) RepositionAllies();
+        if (a != allies) RepositionAllies();
         
         allies = a;
+    }
+
+    public void RemoveAlly()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Ally"));
     }
 
     public void collectAlly(int n, GameObject existingAlly)
@@ -141,6 +146,8 @@ public class PlayerScript : MonoBehaviour
     public void RepositionAllies()
     {
         GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
+        playerCounterSlider.SetSlider(allies.Length);
+        alliesText.text = allies.Length + "/24";
         positions.Clear();
         posFarAlly = negFarAlly = new Vector2(0, 0);
         boxCollider.size = initBox.size;

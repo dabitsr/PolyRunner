@@ -27,45 +27,51 @@ public class CollisionManager : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.CompareTag("Ally") || gameObject.CompareTag("Player"))
+        if (!GameManager.godMode)
         {
-            if (collision.gameObject.CompareTag("People Obstacle"))
+            if (gameObject.CompareTag("Ally") || gameObject.CompareTag("Player"))
             {
-                //KillAlly(false);
-            }
-            else if (collision.gameObject.CompareTag("Obstacle"))
-            {
-                KillAlly(true);
+                if (collision.gameObject.CompareTag("People Obstacle"))
+                {
+                    //KillAlly(false);
+                }
+                else if (collision.gameObject.CompareTag("Obstacle"))
+                {
+                    KillAlly(true);
 
-                if (gameObject.CompareTag("Player"))
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    if (gameObject.CompareTag("Player"))
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("Player") && other.gameObject.CompareTag("FloorPlayer"))
-        {
-            AudioPlayerController.PlayAudio(pickAudio);
-            AddAlly(other.gameObject.transform.position);
-            /*
-            audio.clip = pickAudio;
-            audio.Play();
-             */
-        }
-
-        if (gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player"))
-        {
-            if (other.CompareTag("People Obstacle"))
+            if (gameObject.CompareTag("Player") && other.gameObject.CompareTag("FloorPlayer"))
             {
-                //KillAlly(false);
-            } else if (other.CompareTag("Obstacle"))
-            {
-                KillAlly(true);
+                AudioPlayerController.PlayAudio(pickAudio);
+                AddAlly(other.gameObject.transform.position);
+                /*
+                audio.clip = pickAudio;
+                audio.Play();
+                 */
+            }
 
-                if (gameObject.CompareTag("Player"))
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!GameManager.godMode)
+        {
+            if (gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player"))
+            {
+                if (other.CompareTag("People Obstacle"))
+                {
+                    //KillAlly(false);
+                } else if (other.CompareTag("Obstacle"))
+                {
+                    KillAlly(true);
+
+                    if (gameObject.CompareTag("Player"))
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
     }

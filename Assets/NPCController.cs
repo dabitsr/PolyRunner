@@ -36,18 +36,21 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player")) && !punching)
+        if (!GameManager.godMode)
         {
-            other.gameObject.GetComponent<CollisionManager>().KillAlly(false);
-            punching = true;
-            boxCollider.enabled = false;
-            rb.useGravity = false;
-            controller.enabled = false;
-            Invoke("PlayPunchSound", 0.2f);
-            Vector3 targetDirection = other.transform.position - transform.position;
-            transform.LookAt(targetDirection);
-            anim.SetTrigger("punch");
-            StartCoroutine(ResetRotation());
+            if ((other.gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player")) && !punching)
+            {
+                other.gameObject.GetComponent<CollisionManager>().KillAlly(false);
+                punching = true;
+                boxCollider.enabled = false;
+                rb.useGravity = false;
+                controller.enabled = false;
+                Invoke("PlayPunchSound", 0.2f);
+                Vector3 targetDirection = other.transform.position - transform.position;
+                transform.LookAt(targetDirection);
+                anim.SetTrigger("punch");
+                StartCoroutine(ResetRotation());
+            }
         }
         if (other.gameObject.CompareTag("Despawner"))
             Destroy(gameObject);

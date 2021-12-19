@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> bounds = new();
     public GameObject firstPlatform, floor, floorPlayerPrefab;
     public int floorPlayersCount;
+    public static bool godMode = false;
 
     static float maxLeft, maxRight;
     GameObject player;
