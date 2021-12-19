@@ -7,6 +7,7 @@ public class PlayerFloor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.GetChild(0).GetChild(GameManager.GetCurrentSkin()).gameObject.SetActive(true);
     }
 
     // Update is called once per frame

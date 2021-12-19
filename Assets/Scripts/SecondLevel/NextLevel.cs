@@ -18,28 +18,9 @@ public class NextLevel : MonoBehaviour
     {
         if (player.transform.position.z >= transform.position.z)
         {
-            SceneManager.LoadScene(LevelConverter(nextLevel));
+            print("Loading " + GameManager.LevelConverterIntToString(nextLevel) + " ...");
+            SceneManager.LoadScene(GameManager.LevelConverterIntToString(nextLevel));
         }
     }
 
-    string LevelConverter(int lvl)
-    {
-        switch(lvl)
-        {
-            case 0:
-                return "MainMenu";
-            case 1:
-                return "PolyRunnerFirstScene";
-            case 2:
-                return "PolyRunnerSecondScene";
-            case 3:
-                return "PolyRunnerThirdScene";
-            case 4:
-                return "PolyRunnerFourthScene";
-            case 5:
-                return "PolyRunnerFifthScene";
-            default:
-                return "";
-        }
-    }
 }
