@@ -24,7 +24,7 @@ public class PirateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.CompareTag("Ally")) && !punching)
+        if ((other.gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player")) && !punching)
         {
             other.gameObject.GetComponent<CollisionManager>().KillAlly(false);
             punching = true;

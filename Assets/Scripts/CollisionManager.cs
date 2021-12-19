@@ -26,7 +26,7 @@ public class CollisionManager : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.CompareTag("Ally"))
+        if (gameObject.CompareTag("Ally") || gameObject.CompareTag("Player"))
         {
             if (collision.gameObject.CompareTag("People Obstacle"))
             {
@@ -51,7 +51,7 @@ public class CollisionManager : MonoBehaviour
              */
         }
 
-        if (gameObject.CompareTag("Ally"))
+        if (gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player"))
         {
             if (other.CompareTag("People Obstacle"))
             {

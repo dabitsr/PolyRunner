@@ -13,11 +13,11 @@ public class PlayerScript : MonoBehaviour
     public Vector3 spawnPoint;
     public GameObject playerAllyPrefab;
     public float expandX, expandZ;
+    [SerializeField] BoxCollider boxCollider;
 
     float distanceAllies;
     Dictionary<Vector2, bool> positions = new();
     Animator anim;
-    BoxCollider boxCollider;
     initBoxColliderStruct initBox;
     Vector2 posFarAlly, negFarAlly = new Vector2(0, 0); // Los aliados más alejados del jugador (se usa para calcular el collider del grupo)
     int allies;
@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", true);
         transform.position = spawnPoint;
-        boxCollider = GetComponent<BoxCollider>();
+        //boxCollider = GetComponent<BoxCollider>();
         initBox.size = boxCollider.size;
         initBox.center = boxCollider.center;
         distanceAllies = boxCollider.bounds.size.x;

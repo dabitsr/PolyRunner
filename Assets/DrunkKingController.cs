@@ -39,7 +39,7 @@ public class DrunkKingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.CompareTag("Ally")))
+        if (other.gameObject.CompareTag("Ally") || other.gameObject.CompareTag("Player"))
         {
             navMeshController.SetDestination(transform);
             punching = true;

@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: -6432243853719350554}
   - component: {fileID: 7053641327404043059}
   - component: {fileID: -5143098680303726798}
+  - component: {fileID: -3400399384894640734}
   m_Layer: 0
   m_Name: Cow Brown
   m_TagString: Obstacle
@@ -230,9 +231,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7a8ecf224348340ea938d9a55928756b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -241,13 +242,46 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 35
   Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 1
+  rolloffMode: 2
+  BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.012711335
+      value: 0.99499893
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.59554785
+      value: 0.6050294
+      inSlope: -1.0027659
+      outSlope: -1.0027659
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.0526316
+      outSlope: -1.0526316
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -259,33 +293,9 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -300,7 +310,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -315,7 +325,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!195 &1975079846178988934
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -377,6 +387,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50108605fdc6e7e4e98ecee053120a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3400399384894640734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862367689803261568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66a3fc4ff93dd74aacd57763a963e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatRate: 0
+  minRepeatRate: 2
+  maxRepeatRate: 10
+  randomRate: 1
+  audios:
+  - {fileID: 8300000, guid: 52b89907fea2c4543883a889a191a5fd, type: 3}
+  - {fileID: 8300000, guid: 7a8ecf224348340ea938d9a55928756b, type: 3}
+  - {fileID: 8300000, guid: c244c3141607649918f54beb8a706957, type: 3}
 --- !u!1 &1862370097151260442
 GameObject:
   m_ObjectHideFlags: 0

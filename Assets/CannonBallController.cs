@@ -25,9 +25,13 @@ public class CannonBallController : MonoBehaviour
             AudioPlayerController.PlayAudio(audios[n]);
             //GameObject.Find("Player").GetComponent<PlayerScript>().PlayAudio(audios[n]);
             Instantiate(explosionParticle, transform.position, Quaternion.Euler(Vector3.zero), transform).Play();
-            Destroy(gameObject);
+            GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0, 0);
+            Invoke("Delete", 3);
+            print("ASS");
         }
         else
             Instantiate(collisionParticle, transform.position, Quaternion.Euler(Vector3.zero), transform).Play();
     }
+
+    void Delete() => Destroy(gameObject);
 }
