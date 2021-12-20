@@ -132,6 +132,7 @@ public class GeneralOptions : MonoBehaviour
     public void LoadScene(string scene)
     {
         Time.timeScale = 1;
+        AudioListener.pause = false;
         SceneManager.LoadScene(scene);
     }
 
