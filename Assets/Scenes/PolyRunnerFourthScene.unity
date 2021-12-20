@@ -1761,10 +1761,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1669080024, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 378451967952768230, guid: cf51da9dfae15414f88f6eed88636a9e, type: 3}
       propertyPath: alliesText
       value: 
