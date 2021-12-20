@@ -21,6 +21,7 @@ public class end : MonoBehaviour
         {
             player.SetActive(false);
             camera.GetComponent<FollowTarget>().enabled = false;
+            camera.GetComponent<AudioListener>().enabled = true;
             if (first)
             {
                 camera.transform.position = new Vector3(0.0f, 6.0f, -10.0f);

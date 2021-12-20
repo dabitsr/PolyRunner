@@ -65,7 +65,7 @@ MonoBehaviour:
   diffSpeed: 1.5
   lightTime: 10
   distance: 45
-  explodeTime: 2
+  explodeTime: 1
   light: {fileID: 5814574404874866583}
   player: {fileID: 0}
   explosion: {fileID: 7990043504621846818}

@@ -29,7 +29,7 @@ public class DrunkKingController : MonoBehaviour
         if (!punching)
             Invoke("ChangeDirection", Random.Range(changeDirectionRate.x, changeDirectionRate.y));
 
-        Vector2 p = Random.insideUnitCircle * 5;
+        Vector2 p = Random.insideUnitCircle * 3;
         dest.position = new Vector3(initPos.position.x + p.x, initPos.position.y, initPos.position.z + p.y);
         NavMeshHit hit;
         NavMesh.SamplePosition(dest.position, out hit, 4, 1);
