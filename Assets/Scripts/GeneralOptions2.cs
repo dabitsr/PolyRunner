@@ -1,26 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class GeneralOptions : MonoBehaviour
+public class GeneralOptions2 : MonoBehaviour
 {
     public TMP_Dropdown dropdown;
     public int quality;
-    public GameObject frame, switchLevelFrame;
+    public GameObject frame;
     [SerializeField] Slider volumeSlider;
-    [SerializeField] TextMeshProUGUI playersCounterText;
-    [SerializeField] Button minusButton;
-    [SerializeField] Toggle godMode;
 
-    PlayerScript playerScript;
-    int playersCounter;
     // Start is called before the first frame update
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         /* Audio options */
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
@@ -39,12 +32,8 @@ public class GeneralOptions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        minusButton.interactable = playersCounter > 0;
-
         if (Input.GetKeyUp("escape"))
         {
-            playersCounter = GameObject.FindGameObjectsWithTag("Ally").Length;
-            UpdatePlayersCounterText();
             if (frame.active)
             {
                 Time.timeScale = 1;
@@ -95,48 +84,5 @@ public class GeneralOptions : MonoBehaviour
     private void Save()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
-    }
-
-    public void GoBackToOptions()
-    {
-        frame.gameObject.SetActive(true);
-        switchLevelFrame.gameObject.SetActive(false);
-    }
-
-    public void GoToSwitchLevel()
-    {
-        frame.gameObject.SetActive(false);
-        switchLevelFrame.gameObject.SetActive(true);
-    }
-
-    public void UpdateGodmode(bool gm)
-    {
-        GameManager.godMode = godMode.isOn;
-        print("godMode: " + GameManager.godMode);
-    }
-
-    public void AddFollower()
-    {
-        playerScript.collectAlly(GameObject.FindGameObjectsWithTag("Ally").Length, null);
-        playersCounter++;
-        UpdatePlayersCounterText();
-    }
-
-    public void RemoveFollower()
-    {
-        playerScript.RemoveAlly();
-        playersCounter--;
-        UpdatePlayersCounterText();
-    }
-
-    public void LoadScene(string scene)
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(scene);
-    }
-
-    void UpdatePlayersCounterText()
-    {
-        playersCounterText.text = playersCounter + " FOLLOWERS";
     }
 }

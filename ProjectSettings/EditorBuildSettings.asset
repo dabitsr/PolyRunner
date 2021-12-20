@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7c39203010774d24e9c94e1091fadc6e
   - enabled: 1
-    path: Assets/Scenes/PolyRunnerFirstScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/PolyRunnerSecondScene.unity
     guid: b589894f97d760d428b7320abc891722
   - enabled: 1
@@ -23,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PolyRunnerFifthScene.unity
     guid: 8bf572340776042468e04b983d4d58c4
+  - enabled: 1
+    path: Assets/Scenes/PolyRunnerFirstScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
